@@ -27,6 +27,11 @@ function RandomBarnsleyFern(P, PointNums)
     return X, Y
 end
 
-x, y = RandomBarnsleyFern(100, 1000000)
-scatter(x,y,markersize = 0.0001, legend = false, border=:none, color =:green, dpi=500)
-savefig("C:\\Users\\Yaghoub\\Documents\\GitHub\\A-few-fractals-in-Julia\\Fractals-Fig\\RandomBarnsleyFern.png")
+for i in [10, 100]
+    for j in [10000,1000000]
+        x,y = RandomBarnsleyFern(i, j)
+
+        scatter(x,y,markersize = 10^4/j, legend = false, border=:none, color =:green,dpi=200, label = "Points number = $j Operations number = $i")
+        savefig("C:\\Users\\Yaghoub\\Documents\\GitHub\\ComputationalPhysics-Fall2021\\ProblemSet1\\Figs\\Q6\\RandomBarnsleyFern-p$(i)num$(j).png")
+    end
+end

@@ -1,0 +1,27 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+
+\author{Yaghoub Shahmari}
+\title{Report - Problem Set no 1}
+\date{\today}
+%\graphicspath{ {images/} }
+
+\begin{document}
+\maketitle
+\section*{Problem 1}
+    \textbf{Basic description}
+    
+    there we want to simulate the Koch curve using computational methods.
+    in that case, we have to follow the algorithm which leads us to the solution.
+    at first, we have a list of 2 points that create a single line.
+    then we have to create 3 more points between them and transmit them to the position they have to go.
+    at first, we divide the line into third.
+    add the final point of the line in the middle of our list.
+    then we will do that again but we will divide the first line to two-thirds instead of third.
+    then we will rotate the final spot in 60 degrees and add the point before the last point in the list.
+    and finally, we will do the previous operation without rotation.
+    we have to repeat these operations for every point side by side in the initial list
+    (the initial list in every step will be updated and will contain more points).
+
+\end{document}
