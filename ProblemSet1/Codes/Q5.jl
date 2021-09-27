@@ -18,17 +18,26 @@ function khayyam_triangle(lentingle)
     return output
 end
 
-order = 2^11
-triangle = khayyam_triangle(order)
-x = []
-y = []
-for i in 1:order
-    for j in 1:i
-        if triangle[i][j]%2 != 0
-            push!(x, j - i/2)
-            push!(y, -i)
+function SPT_KhPT(order)
+    order = 2^order
+    triangle = khayyam_triangle(order)
+    x = []
+    y = []
+    for i in 1:order
+        for j in 1:i
+            if triangle[i][j]%2 != 0
+                push!(x, j - i/2)
+                push!(y, -i)
+            end
         end
     end
+    return x, y
 end
-scatter(x,y,markersize = 0.000001, legend = false, border=:none, dpi=300)
-savefig("C:\\Users\\Yaghoub\\Documents\\GitHub\\A-few-fractals-in-Julia\\Fractals-Fig\\SKT.png")
+
+msize = [7,1,0.1]
+olist = [5, 7, 10]
+for i in 1:3
+    x,y = SPT_KhPT(olist[i])
+    scatter(x,y,markersize = msize[i], legend = false, border=:none, dpi=300)
+    savefig("C:\\Users\\Yaghoub\\Documents\\GitHub\\ComputationalPhysics-Fall2021\\ProblemSet1\\Figs\\Q5\\SPTKP-O$(i).png")
+end
