@@ -1,11 +1,11 @@
 using Plots, LaTeXStrings, Statistics
 
-function Deposition(;len, tot_time, time_steps)
+function Deposition(;len, tot_time, time_steps, rate)
     Time = ceil.(Int, exp.(0:(tot_time)/(time_steps):tot_time))
     surf = [0 for i=1:len]
     VarList = [0.0 for i=1:time_steps]
     for n in 1:time_steps
-        randsurf = rand(1:len,(Time[n+1]-Time[n]))
+        randsurf = rand(1:len,(Time[n+1]-Time[n])*rate)
         for i in randsurf
             surf[i] += 1
         end
@@ -14,7 +14,7 @@ function Deposition(;len, tot_time, time_steps)
     return VarList
 end
 
-function Linear_fit(;len, tot_time, time_steps)
+function Linear_fit(;len, tot_time, time_steps, rate)
     A = [hcat(log.(Time)) reshape(ones(time_steps), time_steps, 1)]
     b = reshape(log.(meanVar), time_steps, 1)
     line = (A \ b)
@@ -27,7 +27,8 @@ iternum = 1000
 Parameters = Dict(
                 :len => 200,
                 :tot_time => 10,
-                :time_steps => 20)
+                :time_steps => 20,
+                :rate => 10)
 allVar = [[0.0 for i in 1:Parameters[:time_steps]] for j = 1:iternum]
 meanVar = [0.0 for i in 1:Parameters[:time_steps]]
 vars = [0.0 for i in 1:Parameters[:time_steps]]
