@@ -32,6 +32,6 @@ end
 
 for C in 1:length(cList)
     data = JuliaSet(cList[C], 100)
-    heatmap(data, c = cgrad(:solar, rev = false), legend = false, border=:none)
+    heatmap(data, c = cgrad(:solar, rev = false), legend = false, border=:none, title = "C = $(cList[C])")
     savefig("C:\\Users\\Yaghoub\\Documents\\GitHub\\ComputationalPhysics-Fall2021\\ProblemSet2\\Figs\\Q1\\JuliaSet$C.png")
 end
