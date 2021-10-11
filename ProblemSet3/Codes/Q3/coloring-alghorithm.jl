@@ -1,0 +1,66 @@
+using Plots
+
+P = 0.01
+dim = 100
+maxnum = 1000
+
+Network = rand((0,-1),dim,dim)
+
+Network[1,:] = fill(1,dim)
+Network[end,:] = fill(maxnum,dim)
+
+Num = 2
+
+for i in 2:dim-1
+    for j in 1:dim
+        if P > rand() && Network[i, j] == 0
+            Network[i, j] = Num
+            Num += 1
+        end
+        colorList, Numbereds = findNeighbors(i, j, Network)
+        if Numbereds == 0
+            continue
+        elseif Numbereds == 1
+            for neighbor in ([0,1], [1,0], [0,-1], [-1,0])
+                if Network[([i, j] + neighbor)...] > 0
+                    Network[i, j] = Network[([i, j] + neighbor)...]
+                end
+            end
+        else
+            Network = joincolor(Network, dim, colorList)
+        end
+    end
+end
+
+#= second scenario =#
+
+#= second scenario =#
+
+#= Third scenario =#
+
+function findNeighbors(i, j, Network)
+    Numbereds = 0
+    colorList = [Network[i, j]]
+    for neighbor in ([0,1], [1,0], [0,-1], [-1,0])
+        if Network[([i, j] + neighbor)...] > 0
+            push!(colorList,Network[([i, j] + neighbor)...])
+            Numbereds += 1
+        end
+    end
+    return colorList, Numbereds
+end
+
+function joincolor(Network, dim, colorList)
+    mincolor = min(colorList...)
+    for i in 1:dim
+        for j in 1:dim
+            if Network[i, j] in colorList
+                Network[i, j] = mincolor
+            end
+        end
+    end
+    return Network
+end
+
+#= Third scenario =#
+Network = rand(1:3,10,10)
