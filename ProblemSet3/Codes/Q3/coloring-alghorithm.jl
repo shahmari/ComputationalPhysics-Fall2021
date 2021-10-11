@@ -11,34 +11,29 @@ Network[end,:] = fill(maxnum,dim)
 
 Num = 2
 
+function ColoringTheNode(i, j, Network, Num)
+    if P > rand() && Network[i, j] == 0
+        Network[i, j] = Num
+        Num += 1
+    end
+    return Network, Num
+end
+
 for i in 2:dim-1
     for j in 1:dim
-        if P > rand() && Network[i, j] == 0
-            Network[i, j] = Num
-            Num += 1
-        end
-        colorList, Numbereds = findNeighbors(i, j, Network)
+        Network, Num = ColoringTheNode(i, j, Network, Num)
+        colorList, Numbereds = FindNeighbors(i, j, Network)
         if Numbereds == 0
             continue
         elseif Numbereds == 1
-            for neighbor in ([0,1], [1,0], [0,-1], [-1,0])
-                if Network[([i, j] + neighbor)...] > 0
-                    Network[i, j] = Network[([i, j] + neighbor)...]
-                end
-            end
+            Network[i, j] = colorList[2]
         else
-            Network = joincolor(Network, dim, colorList)
+            Network = JoinColors(Network, dim, colorList)
         end
     end
 end
 
-#= second scenario =#
-
-#= second scenario =#
-
-#= Third scenario =#
-
-function findNeighbors(i, j, Network)
+function FindNeighbors(i, j, Network)
     Numbereds = 0
     colorList = [Network[i, j]]
     for neighbor in ([0,1], [1,0], [0,-1], [-1,0])
@@ -47,10 +42,10 @@ function findNeighbors(i, j, Network)
             Numbereds += 1
         end
     end
-    return colorList, Numbereds
+    return colorList, Numbereds #colorList contain the node and its neighbors
 end
 
-function joincolor(Network, dim, colorList)
+function JoinColors(Network, dim, colorList)
     mincolor = min(colorList...)
     for i in 1:dim
         for j in 1:dim
@@ -62,5 +57,4 @@ function joincolor(Network, dim, colorList)
     return Network
 end
 
-#= Third scenario =#
 Network = rand(1:3,10,10)
