@@ -35,32 +35,38 @@ function JoinColors(Network, dim, colorList)
     return Network
 end
 
-P = 1
-Pnet = 0.8
-dim = 100
-maxnum = 100000
+function InitialNetwork(dim, Pnet)
+    Network = sample([-1,0], Weights([1-Pnet, Pnet]),(dim,dim))
+    return Network
+end
 
-Network = sample([-1,0], Weights([1-Pnet, Pnet]),(dim,dim))
-
-Network[1,:] = fill(1,dim)
-Network[end,:] = fill(maxnum,dim)
-
-Num = 2
-
-for i in 2:dim-1
-    for j in 1:dim
-        Network, Num, check = ColoringTheNode(i, j, Network, Num)
-        if check == true
-            colorList, Numbereds = FindNeighbors(i, j, Network, dim)
-            if Numbereds == 0
-                continue
-            elseif Numbereds == 1
-                Network[i, j] = colorList[1]
-            else
-                Network = JoinColors(Network, dim, colorList)
+function PercolationCheck(dim, Pnet, P)
+    Num = 2
+    maxnum = 100000
+    Network = InitialNetwork(dim, Pnet)
+    Network[1,:] = fill(1,dim)
+    Network[end,:] = fill(maxnum,dim)
+    for i in 2:dim-1
+        for j in 1:dim
+            Network, Num, check = ColoringTheNode(i, j, Network, Num)
+            if check == true
+                colorList, Numbereds = FindNeighbors(i, j, Network, dim)
+                if Numbereds == 0
+                    continue
+                elseif Numbereds == 1
+                    Network[i, j] = colorList[1]
+                else
+                    Network = JoinColors(Network, dim, colorList)
+                end
             end
         end
     end
+    if Network[end,:] == fill(1,dim)
+        return 1
+    else
+        return 0
+    end
 end
 
-Network
+
+PercolationCheck(50,0.65,0.5)
