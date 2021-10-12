@@ -36,7 +36,7 @@ function JoinColors(Network, dim, colorList)
 end
 
 function InitialNetwork(dim, P)
-    Network = sample([-1,0], Weights([1-P, P]),(dim,dim))
+    Network = sample([-1000,0], Weights([1-P, P]),(dim,dim))
     return Network
 end
 
@@ -67,13 +67,14 @@ function PercolationCheck(dim,P)
 end
 
 
-P=0.85
-
-Data = PercolationCheck(100,P)
-save("Percolation$P.jld", "data", Data)
-anim = Animation()
-for i in 110:100:length(Data)
-    plt = heatmap(Data[i], c = cgrad(:copper, 10), legend = false, border = :none, title = "Percolation for P = $P")
-    frame(anim, plt)
+Plist = [0.5,0.55,0.6,0.65,0.7]
+for P in Plist
+    Data = PercolationCheck(100,P)
+    save("Percolation$P.jld", "data", Data)
+    anim = Animation()
+    for i in 110:100:length(Data)
+        plt = heatmap(Data[i], c = cgrad(:copper, 20), legend = false, border = :none, title = "Percolation for P = $P")
+        frame(anim, plt)
+    end
+    gif(anim, "../../Figs/Q4/Percolation$P.gif")
 end
-gif(anim, "../../Figs/Q4/Percolation$P.gif")
