@@ -1,8 +1,8 @@
-using Plots, StatsBase, Statistics
+using Plots, StatsBase, Statistics, LaTeXStrings, JLD
 
-function ColoringTheNode(i, j, Network, Num, P)
+function ColoringTheNode(i, j, Network, Num)
     check = false
-    if P > rand() && Network[i, j] == 0
+    if Network[i, j] == 0
         Network[i, j] = Num
         check = true
         Num += 1
@@ -35,20 +35,20 @@ function JoinColors(Network, dim, colorList)
     return Network
 end
 
-function InitialNetwork(dim, Pnet)
-    Network = sample([-1,0], Weights([1-Pnet, Pnet]),(dim,dim))
+function InitialNetwork(dim, P)
+    Network = sample([-1,0], Weights([1-P, P]),(dim,dim))
     return Network
 end
 
-function PercolationCheck(dim, Pnet, P)
+function PercolationCheck(dim, P)
     Num = 2
     maxnum = 100000
-    Network = InitialNetwork(dim, Pnet)
+    Network = InitialNetwork(dim, P)
     Network[1,:] = ones(dim)
     Network[end,:] = fill(maxnum,dim)
     for i in 2:dim-1
         for j in 1:dim
-            Network, Num, check = ColoringTheNode(i, j, Network, Num, P)
+            Network, Num, check = ColoringTheNode(i, j, Network, Num)
             if check == true
                 colorList, Numbereds = FindNeighbors(i, j, Network, dim)
                 if Numbereds == 0
@@ -68,4 +68,4 @@ function PercolationCheck(dim, Pnet, P)
     end
 end
 
-PercolationCheck(40,0.55,1)
+PercolationCheck(40,0.55)

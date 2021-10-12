@@ -1,8 +1,8 @@
-using Plots, StatsBase, Statistics
+using Plots, StatsBase, Statistics, LaTeXStrings, JLD
 
 function ColoringTheNode(i, j, Network, Num)
     check = false
-    if P > rand() && Network[i, j] == 0
+    if Network[i, j] == 0
         Network[i, j] = Num
         check = true
         Num += 1
@@ -35,15 +35,15 @@ function JoinColors(Network, dim, colorList)
     return Network
 end
 
-function InitialNetwork(dim, Pnet)
-    Network = sample([-1500,0], Weights([1-Pnet, Pnet]),(dim,dim))
+function InitialNetwork(dim, P)
+    Network = sample([-1,0], Weights([1-P, P]),(dim,dim))
     return Network
 end
 
-function PercolationCheck(dim, Pnet, P)
+function PercolationCheck(dim,P)
     Num = 2
     maxnum = 10000
-    Network = InitialNetwork(dim, Pnet)
+    Network = InitialNetwork(dim, P)
     Network[1,:] = fill(1,dim)
     Network[end,:] = fill(maxnum,dim)
     TotalNets = []
@@ -68,9 +68,9 @@ end
 
 
 P=0.85
-save("Percolation$P.jld", "data", PercolationCheck(100,P,1))
 
-Data = PercolationCheck(100,P,1)
+Data = PercolationCheck(100,P)
+save("Percolation$P.jld", "data", Data)
 anim = Animation()
 for i in 110:100:length(Data)
     plt = heatmap(Data[i], c = cgrad(:copper, 10), legend = false, border = :none, title = "Percolation for P = $P")
