@@ -1,6 +1,6 @@
-using Plots, StatsBase
+using Plots, StatsBase, Statistics
 
-function ColoringTheNode(i, j, Network, Num)
+function ColoringTheNode(i, j, Network, Num, P)
     check = false
     if P > rand() && Network[i, j] == 0
         Network[i, j] = Num
@@ -44,11 +44,11 @@ function PercolationCheck(dim, Pnet, P)
     Num = 2
     maxnum = 100000
     Network = InitialNetwork(dim, Pnet)
-    Network[1,:] = fill(1,dim)
+    Network[1,:] = ones(dim)
     Network[end,:] = fill(maxnum,dim)
     for i in 2:dim-1
         for j in 1:dim
-            Network, Num, check = ColoringTheNode(i, j, Network, Num)
+            Network, Num, check = ColoringTheNode(i, j, Network, Num, P)
             if check == true
                 colorList, Numbereds = FindNeighbors(i, j, Network, dim)
                 if Numbereds == 0
@@ -61,12 +61,11 @@ function PercolationCheck(dim, Pnet, P)
             end
         end
     end
-    if Network[end,:] == fill(1,dim)
+    if 1 in Network[end,:]
         return 1
     else
         return 0
     end
 end
 
-
-PercolationCheck(50,0.65,0.5)
+PercolationCheck(40,0.55,1)
