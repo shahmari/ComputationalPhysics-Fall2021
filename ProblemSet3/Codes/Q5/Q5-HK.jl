@@ -73,7 +73,36 @@ function HKNetworkDynamic(dim, P)
             end
         end
     end
-    return Network
+    # return Network
+    return CheckPercolation(dim, L, Network)
 end
 
-HKNetworkDynamic(200, 0.65)
+HKNetworkDynamic(200, 0.6)
+
+
+Plist = hcat(0.55:0.002:0.65)
+Avglist = []
+STDlist = []
+TotData = []
+# PercolationCheck(40,0.55,1)
+for P in Plist
+    print("\r$P")
+    AllRuns = []
+    for i in 1:1000
+        push!(AllRuns, HKNetworkDynamic(200, P))
+    end
+    push!(TotData, AllRuns)
+    push!(STDlist, std(AllRuns))
+    push!(Avglist, mean(AllRuns))
+end
+
+save("200x200-HK.jld", "data", TotData)
+
+scatter(Plist,
+    Avglist,
+    yerr = STDlist,
+    legend = nothing,
+    xlabel = L"P",
+    ylabel = L"Avg\ Q",
+    title = L"Percolation \ for \ 200\times200 \ Network\ (1000 \ runs)")
+savefig("../../Figs/Q5/200x200.pdf")
