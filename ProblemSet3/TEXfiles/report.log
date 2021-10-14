@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  14 OCT 2021 22:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  15 OCT 2021 00:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -194,20 +194,37 @@ File: ../Figs///Q2/W-t(L=300).pdf Graphic file (type pdf)
 <use ../Figs///Q2/W-t(L=300).pdf>
 Package pdftex.def Info: ../Figs///Q2/W-t(L=300).pdf  used on input line 170.
 (pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
- [4 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/Graphic.pdf>] [5 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=200).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=200).pdf>] [6 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=300).pdf>] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux) ) 
+ [4 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/Graphic.pdf>] [5 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=200).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=200).pdf>]
+<../Figs///Q3/Graphic.pdf, id=61, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Graphic.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Graphic.pdf>
+Package pdftex.def Info: ../Figs///Q3/Graphic.pdf  used on input line 226.
+(pdftex.def)             Requested size: 301.12425pt x 200.7495pt.
+<../Figs///Q3/Q3-L(t).pdf, id=62, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-L(t).pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-L(t).pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-L(t).pdf  used on input line 234.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
+ [6 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Graphic.pdf>]
+<../Figs///Q4/Q4.pdf, id=70, 433.62pt x 289.08pt>
+File: ../Figs///Q4/Q4.pdf Graphic file (type pdf)
+<use ../Figs///Q4/Q4.pdf>
+Package pdftex.def Info: ../Figs///Q4/Q4.pdf  used on input line 253.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+ [7 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Q3-L(t).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q4/Q4.pdf>] [8] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux) ) 
 Here is how much of TeX's memory you used:
- 1442 strings out of 479302
- 24235 string characters out of 5871204
- 299919 words of memory out of 5000000
- 18653 multiletter control sequences out of 15000+600000
- 407378 words of font info for 40 fonts, out of 8000000 for 9000
+ 1470 strings out of 479302
+ 24837 string characters out of 5871204
+ 299940 words of memory out of 5000000
+ 18676 multiletter control sequences out of 15000+600000
+ 407713 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,6n,74p,449b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (6 pages, 1170257 bytes).
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (8 pages, 1305171 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -153,7 +153,7 @@
         \label{fig:2.4}
         \includegraphics[scale = 0.283]{/Q2/W-t(L=100)}
         \label{fig:2.5}
-        \caption{Ballistic Deposition with relaxation for $L=100$}
+        \caption{Ballistic Deposition for $L=100$}
     \end{figure}
     \begin{figure}[!htb]
         \centering
@@ -207,4 +207,60 @@
         line \ slope = drop \ rate \div L
     \end{equation}
 
+    \section*{Problem 3}
+    \textbf{Basic description:}
+
+    For this question, we need to change the previous code a little.
+    The only change we need to make is considering a condition.
+    Only two types of particles can be dropped and caught.
+    The particles that stick to the midpoint and those stick to the other particles.
+
+    The parameters are as following:
+
+    \textbullet \ The length of the surface is 300, and we will deposit 50000 particles.
+
+    \textbf{The results:}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.5]{/Q3/Graphic}
+        \label{fig:3.1}
+        \caption{Competitive Ballistic Deposition :
+        50000 particles will drop on a surface of three hundred lengths.}
+    \end{figure}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.4]{/Q3/Q3-L(t)}
+        \label{fig:3.2}
+        \caption{Competitive Ballistic Deposition for $L=300$.}
+    \end{figure}
+
+    As it is clear, the transverse width of the shrub grows linearly,
+    until it becomes equal to the surface length.
+
+    \section*{Problem 4}
+    \textbf{Basic description:}
+
+    Here we want to simulate the percolation of a binary defined network.
+    In that case, we create a random binary network using the python networkx.
+    Then we will check if there is a path between every node on the sides of the network.
+    If we find a route, we will consider the percolation successful. And we check that for a range of P.
+    So here is the result:
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.5]{/Q4/Q4}
+        \label{fig:4.1}
+        \caption{The results of percolation for a range of P for 1000 runs.}
+    \end{figure}
+
+    \section*{Problem 5}
+    \textbf{Basic description:}
+
+    The coloring algorithm deployed as the question wanted.
+    My program can find percolation in a binary network and return the result as 0 or 1.
+    For some critical P (or at least near to critical point),
+    I drew an animation of stages of the dynamic of percolation for colors.
+    The results are available in the Q5 folder in the Figs folder.
 \end{document}
