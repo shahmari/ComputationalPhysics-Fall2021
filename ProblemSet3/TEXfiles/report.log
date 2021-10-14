@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  14 OCT 2021 00:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  14 OCT 2021 17:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -42,40 +42,47 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
+) (c:/texlive/2020/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen141
+\WF@size=\dimen142
+\c@WF@wrappedlines=\count185
+\WF@box=\box47
+\WF@everypar=\toks16
+Package: wrapfig 2003/01/31  v 3.6
 ) (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count185
-\l__pdf_internal_box=\box47
+\l__color_backend_stack_int=\count186
+\l__pdf_internal_box=\box48
 ) (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count186
-\scratchdimen=\dimen141
-\scratchbox=\box48
-\nofMPsegments=\count187
-\nofMParguments=\count188
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count189
-\MPscratchDim=\dimen142
-\MPnumerator=\count190
-\makeMPintoPDFobject=\count191
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count187
+\scratchdimen=\dimen143
+\scratchbox=\box49
+\nofMPsegments=\count188
+\nofMParguments=\count189
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count190
+\MPscratchDim=\dimen144
+\MPnumerator=\count191
+\makeMPintoPDFobject=\count192
+\everyMPtoPDFconversion=\toks18
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -83,27 +90,47 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 11.
+(Font)              <12> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <8> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 11.
+(Font)              <6> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 22.
+<../Figs///Q1/Graphic.pdf, id=1, 602.25pt x 401.5pt>
+File: ../Figs///Q1/Graphic.pdf Graphic file (type pdf)
+<use ../Figs///Q1/Graphic.pdf>
+Package pdftex.def Info: ../Figs///Q1/Graphic.pdf  used on input line 28.
+(pdftex.def)             Requested size: 301.12425pt x 200.7495pt.
  [1
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux) ) 
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q1/Graphic.pdf>]
+<../Figs///Q1/H-t(L=50).pdf, id=16, 602.25pt x 401.5pt>
+File: ../Figs///Q1/H-t(L=50).pdf Graphic file (type pdf)
+<use ../Figs///Q1/H-t(L=50).pdf>
+Package pdftex.def Info: ../Figs///Q1/H-t(L=50).pdf  used on input line 45.
+(pdftex.def)             Requested size: 165.61465pt x 110.40977pt.
+<../Figs///Q1/W-t(L=50).pdf, id=17, 602.25pt x 401.5pt>
+File: ../Figs///Q1/W-t(L=50).pdf Graphic file (type pdf)
+<use ../Figs///Q1/W-t(L=50).pdf>
+Package pdftex.def Info: ../Figs///Q1/W-t(L=50).pdf  used on input line 47.
+(pdftex.def)             Requested size: 165.61465pt x 110.40977pt.
+ [2 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q1/H-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q1/W-t(L=50).pdf>] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux) ) 
 Here is how much of TeX's memory you used:
- 1234 strings out of 479302
- 19562 string characters out of 5871204
- 291792 words of memory out of 5000000
- 18460 multiletter control sequences out of 15000+600000
+ 1330 strings out of 479302
+ 21117 string characters out of 5871204
+ 295814 words of memory out of 5000000
+ 18548 multiletter control sequences out of 15000+600000
  407378 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,6n,74p,268b,191s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (1 page, 48169 bytes).
+ 68i,6n,74p,430b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (2 pages, 187500 bytes).
 PDF statistics:
- 28 PDF objects out of 1000 (max. 8388607)
- 19 compressed objects within 1 object stream
+ 49 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
