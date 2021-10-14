@@ -3,6 +3,16 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
 \author{Yaghoub Shahmari}
 \title{Report - Problem Set no 2}
 \date{\today}
@@ -263,4 +273,42 @@
     For some critical P (or at least near to critical point),
     I drew an animation of stages of the dynamic of percolation for colors.
     The results are available in the Q5 folder in the Figs folder.
+
+    \section*{Problem 6}
+    \textbf{Basic description:}
+
+    For large networks, the coloring algorithm is not fast enough.
+    So I deployed the H-K algorithm for a network of sizes 100 and 200.
+    So I exported the result of percolation of P in a range many times and showed the statistic results as following plots:
+
+    \textbf{The results:}
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.4]{/Q6/10x10}
+        \label{fig:6.1}
+        \includegraphics[scale = 0.4]{/Q6/100x100}
+        \label{fig:6.2}
+        \includegraphics[scale = 0.4]{/Q6/200x200}
+        \label{fig:6.3}
+        \caption{Percolation result for $L=50, 100, 200$}
+    \end{figure}
+
+    \pagebreak
+    \section*{Problem 7}
+    \textbf{Basic description:}
+    There is only one small change in the previous question in detecting percolation to achieve the answer for this question. We just need to check if a random point is in the connector cluster.
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.4]{/Q7/10x10}
+        \label{fig:7.1}
+        \includegraphics[scale = 0.4]{/Q7/100x100-10000}
+        \label{fig:7.2}
+        \includegraphics[scale = 0.4]{/Q7/200x200-10000}
+        \label{fig:7.3}
+        \caption{$Q_{\infty}$ for $L=50, 100, 200$}
+    \end{figure}
+
+    \centering
+    \textbf{The whole data I gathered is in \href{https://github.com/shahmari/ComputationalPhysics-Fall2021/tree/main/ProblemSet3/Data}{this link}}
 \end{document}
