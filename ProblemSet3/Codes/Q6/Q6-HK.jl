@@ -24,7 +24,7 @@ function RecursionMapping(x, L)
     return L[x]
 end
 
-function CheckPercolation(dim, L, Network)
+@inline function CheckPercolation(dim, L, Network)
     fside = []
     lside = []
     for i in 1:dim
@@ -42,7 +42,7 @@ function CheckPercolation(dim, L, Network)
     end
 end
 
-function HKNetworkDynamic(dim, P)
+@inline function HKNetworkDynamic(dim, P)
     Network = InitialNetwork(dim, P)
     S = []
     L = []
@@ -77,7 +77,7 @@ function HKNetworkDynamic(dim, P)
     return CheckPercolation(dim, L, Network)
 end
 
-HKNetworkDynamic(200, 0.6)
+@time HKNetworkDynamic(100, 0.6)
 
 
 Plist = hcat(0.55:0.002:0.65)

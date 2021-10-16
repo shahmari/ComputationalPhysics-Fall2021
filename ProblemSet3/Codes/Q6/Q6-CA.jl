@@ -40,7 +40,7 @@ function InitialNetwork(dim, P)
     return Network
 end
 
-function PercolationCheck(dim, P)
+@inline function PercolationCheck(dim, P)
     Num = 2
     maxnum = 100000
     Network = InitialNetwork(dim, P)
@@ -68,8 +68,9 @@ function PercolationCheck(dim, P)
     end
 end
 
-
-
+a = time()
+PercolationCheck(100,0.6)
+time()-a
 Plist = hcat(0:0.02:1)
 Avglist = []
 STDlist = []
