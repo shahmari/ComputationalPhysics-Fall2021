@@ -71,16 +71,13 @@ function JoinColors(Network, L)
 end
 
 function FindCorrelationLength(Network, S)
-    if length(Set(S)) == 0
+    if length(Set(S)) < 3
         return 0.0
     end
     if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
         S[findall(x->x==max(S...),S)[1]] = 0
     end
     BiggestFinite = findall(x->x==max(S...),S)[1]
-    if S[BiggestFinite] < 2
-        return 0.0
-    end
     iMC = 0.0
     jMC = 0.0
     for indx in findall(x->x==BiggestFinite,Network)
@@ -95,7 +92,7 @@ function FindCorrelationLength(Network, S)
     return sqrt(ΣR²)
 end
 
-dim = 10
+dim = 20
 runnum = 100
 CLAvg = []
 CLSTD = []
