@@ -71,11 +71,13 @@ function JoinColors(Network, L)
 end
 
 function FindCorrelationLength(Network, S)
-    if length(Set(S)) < 3
+    if length(Set(S)) <= 2
         return 0.0
     end
     if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
-        S[findall(x->x==max(S...),S)[1]] = 0
+        BiggestFinite = findall(x->x==sort(S, rev=true)[2],S)[1]
+    else
+        BiggestFinite = findall(x->x==max(S...),S)[1]
     end
     BiggestFinite = findall(x->x==max(S...),S)[1]
     BFiniteCluster = findall(x->x==BiggestFinite,Network)
