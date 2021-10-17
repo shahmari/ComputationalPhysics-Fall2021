@@ -71,7 +71,7 @@ function JoinColors(Network, L)
 end
 
 function FindCorrelationLength(Network, S)
-    if length(Set(S)) < 3
+    if length(Set(S)) == 0
         return 0.0
     end
     if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
@@ -79,28 +79,22 @@ function FindCorrelationLength(Network, S)
     end
     BiggestFinite = findall(x->x==max(S...),S)[1]
 
-    ilist = []
-    jlist = []
+    iMC = 0.0
+    jMC = 0.0
     for indx in findall(x->x==BiggestFinite,Network)
-        push!(ilist, indx[1])
-        push!(jlist, indx[2])
+        iMC += indx[1]/length(findall(x->x==BiggestFinite,Network))
+        jMC += indx[2]/length(findall(x->x==BiggestFinite,Network))
     end
-    iMC = mean(ilist)
-    jMC = mean(jlist)
     dim = size(Network)[1]
-    R²List = []
-    for i in 1:dim
-        for j in 1:dim
-            if Network[i,j] == BiggestFinite
-                push!(R²List, (i-iMC)^2 + (j-jMC)^2)
-            end
-        end
+    ΣR² = 0.0
+    for indx in findall(x->x==BiggestFinite,Network)
+        ΣR² += ((indx[1]-iMC)^2 + (indx[2]-jMC)^2)/length(findall(x->x==BiggestFinite,Network))
     end
-    return sqrt(mean(R²List))
+    return sqrt(ΣR²)
 end
 
 dim = 50
-runnum = 100
+runnum = 20
 CLAvg = []
 CLSTD = []
 PList = hcat(0:0.02:1)
@@ -115,4 +109,4 @@ for p in PList
     push!(CLSTD, std(totalruns))
 end
 
-scatter(PList,CLAvg, yerr= CLSTD,legend = nothing,)
+scatter(PList,CLAvg, yerr= CLSTD,legend = nothing)
