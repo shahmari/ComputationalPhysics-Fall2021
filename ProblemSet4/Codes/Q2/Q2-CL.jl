@@ -82,21 +82,18 @@ function FindCorrelationLength(Network, S)
     BiggestFinite = findall(x->x==max(S...),S)[1]
     BFiniteCluster = findall(x->x==BiggestFinite,Network)
     BFiniteClusterSize = length(BFiniteCluster)
-    dim = size(Network)[1]
-    ΣR² = 0.0
-    iMC = 0.0
-    jMC = 0.0
-    for indx in BiggestFinite
+    dim = size(Network)[1]; ΣR² = 0.0; iMC = 0.0; jMC = 0.0
+    for indx in BFiniteCluster
         iMC += indx[1]/BFiniteClusterSize
         jMC += indx[2]/BFiniteClusterSize
     end
-    for indx in BiggestFinite
+    for indx in BFiniteCluster
         ΣR² += ((indx[1]-iMC)^2 + (indx[2]-jMC)^2)/BFiniteClusterSize
     end
     return sqrt(ΣR²)
 end
 
-dim = 20
+dim = 100
 runnum = 100
 CLAvg = []
 CLSTD = []
