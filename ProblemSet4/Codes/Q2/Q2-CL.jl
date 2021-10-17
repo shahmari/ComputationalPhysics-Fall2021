@@ -56,7 +56,6 @@ end
         end
     end
     return Network, S, L
-    # return CheckPercolation(dim, L, Network)
 end
 
 function JoinColors(Network, L)
@@ -69,4 +68,33 @@ function JoinColors(Network, L)
         end
     end
     return Network
+end
+
+function FindCorrelationLength(Network, S)
+    if length(Set(S)) < 3
+        return 0.0
+    end
+    if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
+        S[findall(x->x==max(S...),S)[1]] = 0
+    end
+    BiggestFinite = findall(x->x==max(S...),S)[1]
+
+    ilist = []
+    jlist = []
+    for indx in findall(x->x==BiggestFinite,Network)
+        push!(ilist, indx[1])
+        push!(jlist, indx[2])
+    end
+    iMC = mean(ilist)
+    jMC = mean(jlist)
+    dim = size(Network)[1]
+    R²List = []
+    for i in 1:dim
+        for j in 1:dim
+            if Network[i,j] == BiggestFinite
+                push!(R²List, (i-iMC)^2 + (j-jMC)^2)
+            end
+        end
+    end
+    return sqrt(mean(R²List))
 end
