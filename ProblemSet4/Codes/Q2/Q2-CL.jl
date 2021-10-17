@@ -98,3 +98,21 @@ function FindCorrelationLength(Network, S)
     end
     return sqrt(mean(R²List))
 end
+
+dim = 50
+runnum = 100
+CLAvg = []
+CLSTD = []
+PList = hcat(0:0.02:1)
+for p in PList
+    totalruns = []
+    for i in 1:runnum
+        Network, S, L = HKNetworkDynamic(dim, p)
+        Network = JoinColors(Network, L)
+        push!(totalruns, FindCorrelationLength(Network, S))
+    end
+    push!(CLAvg, mean(totalruns))
+    push!(CLSTD, std(totalruns))
+end
+
+scatter(PList,CLAvg, yerr= CLSTD,legend = nothing,)
