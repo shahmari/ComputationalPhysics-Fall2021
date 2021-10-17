@@ -78,7 +78,9 @@ function FindCorrelationLength(Network, S)
         S[findall(x->x==max(S...),S)[1]] = 0
     end
     BiggestFinite = findall(x->x==max(S...),S)[1]
-
+    if S[BiggestFinite] < 2
+        return 0.0
+    end
     iMC = 0.0
     jMC = 0.0
     for indx in findall(x->x==BiggestFinite,Network)
@@ -93,8 +95,8 @@ function FindCorrelationLength(Network, S)
     return sqrt(ΣR²)
 end
 
-dim = 50
-runnum = 20
+dim = 10
+runnum = 100
 CLAvg = []
 CLSTD = []
 PList = hcat(0:0.02:1)
