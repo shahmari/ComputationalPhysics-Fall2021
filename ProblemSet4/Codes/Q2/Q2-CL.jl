@@ -56,10 +56,10 @@ end
         end
     end
     return Network, S, L
+    # return CheckPercolation(dim, L, Network)
 end
 
-function JoinColors(Network, L)
-    dim = size(Network)[1]
+function JoinColors(Network, dim, L)
     for i in 1:dim
         for j in 1:dim
             if Network[i,j]!= -1
@@ -70,49 +70,105 @@ function JoinColors(Network, L)
     return Network
 end
 
-function FindCorrelationLength(Network, S)
-    if length(Set(S)) < 3
-        return 0.0
-    end
-    if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
-        S[findall(x->x==max(S...),S)[1]] = 0
-    end
-    BiggestFinite = findall(x->x==max(S...),S)[1]
+# function FindFinite(Network, dim, L)
+#     fside = []
+#     lside = []
+#     for i in 1:dim
+#         if Network[i,dim] != -1
+#             push!(lside, RecursionMapping(Network[i,dim],L))
+#         end
+#         if Network[i,1] != -1
+#             push!(fside, RecursionMapping(Network[i,1],L))
+#         end
+#     end
+#     Finites = []
+#     for i in L
+#         if RecursionMapping(i,L) ∉ intersect(fside,lside) && RecursionMapping(i,L) ∉ Finites
+#             push!(Finites, RecursionMapping(i,L))
+#         end
+#     end
+#     return Finites
+# end
 
-    ilist = []
-    jlist = []
-    for indx in findall(x->x==BiggestFinite,Network)
-        push!(ilist, indx[1])
-        push!(jlist, indx[2])
+# function FindCorrelationLength(Network, dim, L)
+#     Finites = FindFinite(Network, L)
+#     iMC, jMC = FindMassCenter(Network,dim)
+#
+#     GyrRid = []
+#     for val in Finites
+#         RList = []
+#         for i in 1:dim
+#             for j in 1:dim
+#                 if Network[i,j] != -1 && RecursionMapping(Network[i,j], L) == val
+#                     push!(RList, (iMC - i)^2 + (jMC - j)^2)
+#                 end
+#             end
+#         end
+#         push!(GyrRid, sqrt(mean(RList)))
+#     end
+#     if length(GyrRid) > 0
+#         return mean(GyrRid)
+#     else
+#         return 0.0
+#     end
+# end
+
+function FindFinite(Network, L)
+    Infinites = intersect(Network[1,:],Network[dim,:])
+    Finites = []
+    for i in L
+        if RecursionMapping(i,L) ∉ Infinites && RecursionMapping(i,L) ∉ Finites
+            push!(Finites, RecursionMapping(i,L))
+        end
     end
-    iMC = mean(ilist)
-    jMC = mean(jlist)
-    dim = size(Network)[1]
-    R²List = []
+    return Finites
+end
+
+function FindMassCenter(Network, dim)
+    ilist = 0
+    jlist = 0
+    itnum = 0
     for i in 1:dim
         for j in 1:dim
-            if Network[i,j] == BiggestFinite
-                push!(R²List, (i-iMC)^2 + (j-jMC)^2)
+            if Network[i,j] != -1
+                ilist += i
+                jlist += j
+                itnum += 1
             end
         end
     end
-    return sqrt(mean(R²List))
+    return ilist/itnum , jlist/itnum
 end
 
-dim = 50
-runnum = 100
-CLAvg = []
-CLSTD = []
-PList = hcat(0:0.02:1)
-for p in PList
-    totalruns = []
-    for i in 1:runnum
-        Network, S, L = HKNetworkDynamic(dim, p)
-        Network = JoinColors(Network, L)
-        push!(totalruns, FindCorrelationLength(Network, S))
+function FindCorrelationLength(Network, dim, L)
+    Finites = FindFinite(Network, L)
+    iMC, jMC = FindMassCenter(Network,dim)
+
+    GyrRid = []
+    for val in Finites
+        RList = []
+        for i in 1:dim
+            for j in 1:dim
+                if Network[i,j] != -1 && Network[i,j] == val
+                    push!(RList, (iMC - i)^2 + (jMC - j)^2)
+                end
+            end
+        end
+        push!(GyrRid, sqrt(mean(RList)))
     end
-    push!(CLAvg, mean(totalruns))
-    push!(CLSTD, std(totalruns))
+    if length(GyrRid) > 0
+        return mean(GyrRid)
+    else
+        return 0.0
+    end
 end
 
-scatter(PList,CLAvg, yerr= CLSTD,legend = nothing,)
+# dim = 10
+# CLlist = []
+# PList = hcat(0:0.02:1)
+# for p in PList
+#     Network, S, L = HKNetworkDynamic(dim, p)
+#     push!(CLlist, FindCorrelationLength(Network, dim, L))
+# end
+#
+# scatter(PList,CLlist)
