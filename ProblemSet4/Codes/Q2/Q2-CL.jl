@@ -79,7 +79,6 @@ function FindCorrelationLength(Network, S)
     else
         BiggestFinite = findall(x->x==max(S...),S)[1]
     end
-    BiggestFinite = findall(x->x==max(S...),S)[1]
     BFiniteCluster = findall(x->x==BiggestFinite,Network)
     BFiniteClusterSize = length(BFiniteCluster)
     dim = size(Network)[1]; ΣR² = 0.0; iMC = 0.0; jMC = 0.0
