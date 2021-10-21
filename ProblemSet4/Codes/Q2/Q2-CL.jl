@@ -96,9 +96,9 @@ scatter()
 dimlist = [10,20,40,80,160]
 runnumlist = [10000,5000,3000,2000,1000]
 totalData = []
-for i in 1:5
-    dim = dimlist[i]
-    runnum = runnumlist[i]
+for n in 1:5
+    dim = dimlist[n]
+    runnum = runnumlist[n]
     CLAvg = []
     CLSTD = []
     PList = hcat(0:0.02:1)
