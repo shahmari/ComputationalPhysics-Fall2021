@@ -92,20 +92,33 @@ function FindCorrelationLength(Network, S)
     return sqrt(ΣR²)
 end
 
-dim = 100
-runnum = 100
-CLAvg = []
-CLSTD = []
-PList = hcat(0:0.02:1)
-for p in PList
-    totalruns = []
-    for i in 1:runnum
-        Network, S, L = HKNetworkDynamic(dim, p)
-        Network = JoinColors(Network, L)
-        push!(totalruns, FindCorrelationLength(Network, S))
+scatter()
+dimlist = [10,20,40,80,160]
+runnumlist = [10000,5000,3000,2000,1000]
+totalData = []
+for i in 1:5
+    dim = dimlist[i]
+    runnum = runnumlist[i]
+    CLAvg = []
+    CLSTD = []
+    PList = hcat(0:0.02:1)
+    for p in PList
+        totalruns = []
+        for i in 1:runnum
+            Network, S, L = HKNetworkDynamic(dim, p)
+            Network = JoinColors(Network, L)
+            push!(totalruns, FindCorrelationLength(Network, S))
+        end
+        push!(CLAvg, mean(totalruns))
+        push!(CLSTD, std(totalruns))
+        print("\r$p")
     end
-    push!(CLAvg, mean(totalruns))
-    push!(CLSTD, std(totalruns))
+    push!(totalData, (CLAvg,CLSTD))
+    scatter!(PList,CLAvg, yerr= CLSTD,label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
 end
-
-scatter(PList,CLAvg, yerr= CLSTD,legend = nothing)
+save("../../Data/Q2/Q2-totdata.jld", "data", totalData)
+scatter!(
+    title = L"Correlation\ Length",
+    xlabel = L"P",
+    ylabel = L"\xi_{(P)}")
+savefig("../../Figs/Q2/CL.pdf")
