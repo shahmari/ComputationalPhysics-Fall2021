@@ -92,16 +92,15 @@ function FindCorrelationLength(Network, S)
     return sqrt(ΣR²)
 end
 
-scatter()
 dimlist = [10,20,40,80,160]
 runnumlist = [10000,5000,3000,2000,1000]
+PList = hcat(0:0.02:1)
 totalData = []
 for n in 1:5
     dim = dimlist[n]
     runnum = runnumlist[n]
     CLAvg = []
     CLSTD = []
-    PList = hcat(0:0.02:1)
     for p in PList
         totalruns = []
         for i in 1:runnum
@@ -114,11 +113,61 @@ for n in 1:5
         print("\r$p")
     end
     push!(totalData, (CLAvg,CLSTD))
-    scatter!(PList,CLAvg, yerr= CLSTD,label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
 end
 save("../../Data/Q2/Q2-totdata.jld", "data", totalData)
+
+
+
+PList = hcat(0:0.02:1)
+scatter(dpi = 200)
+for i in 1:5
+    dim = dimlist[i]
+    runnum = runnumlist[i]
+    data = totalData[i]
+    scatter!(PList,data[1], yerr= data[2],label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs",markersize = 3)
+end
 scatter!(
     title = L"Correlation\ Length",
     xlabel = L"P",
     ylabel = L"\xi_{(P)}")
-savefig("../../Figs/Q2/CL.pdf")
+savefig("../../Figs/Q2/CL1.pdf")
+
+
+plot(dpi = 200)
+for i in 1:5
+    dim = dimlist[i]
+    runnum = runnumlist[i]
+    data = totalData[i]
+    scatter!(PList,data[1],label = nothing,markersize = 3, c = :black, alpha = 0.5)
+    plot!(PList,data[1], label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
+end
+scatter!(
+    title = L"Correlation\ Length",
+    xlabel = L"P",
+    ylabel = L"\xi_{(P)}")
+savefig("../../Figs/Q2/CL2.pdf")
+
+
+dimlist = [80,160]
+runnumlist = [2000,1000]
+PList = hcat(0.5:0.005:0.7)
+totalData = []
+for n in 1:2
+    dim = dimlist[n]
+    runnum = runnumlist[n]
+    CLAvg = []
+    CLSTD = []
+    for p in PList
+        totalruns = []
+        for i in 1:runnum
+            Network, S, L = HKNetworkDynamic(dim, p)
+            Network = JoinColors(Network, L)
+            push!(totalruns, FindCorrelationLength(Network, S))
+        end
+        push!(CLAvg, mean(totalruns))
+        push!(CLSTD, std(totalruns))
+        print("\r$p")
+    end
+    push!(totalData, (CLAvg,CLSTD))
+end
+save("../../Data/Q2/Q2-totdata-zoomed.jld", "data", totalData)
