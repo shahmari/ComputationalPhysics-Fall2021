@@ -40,11 +40,9 @@ function ClusterGrowth(dim,P)
     Network = zeros(Int,dim,dim)
     # Network[rand(1:dim^2)] = 1
     Network[round(Int, dim/2), round(Int, dim/2)] = 1
-    while 0 in Network
+    Borders = FindBorder(dim,Network)
+    while length(Borders) != 0
         Borders = FindBorder(dim,Network)
-        if length(Borders) == 0
-            break
-        end
         for spot in Borders
             if P > rand()
                 Network[spot...] = 1
@@ -54,4 +52,19 @@ function ClusterGrowth(dim,P)
         end
     end
     return Network
+end
+
+Network = ClusterGrowth(200,0.56)
+heatmap(Network, legend = nothing)
+
+runnum = 1000
+for p in [0.5,0.55,0.59]
+    totstepdata = []
+    for i in 1:runnum
+        Network = ClusterGrowth(200,p)
+        push!(totstepdata,(FindCorrelationLength(Network,200),length(findall(x-> x==1,Network))))
+        print("\r$i")
+    end
+    println('#')
+    save("../../Data/Q3/Q3-$p-CG.jld", "data", totstepdata)
 end
