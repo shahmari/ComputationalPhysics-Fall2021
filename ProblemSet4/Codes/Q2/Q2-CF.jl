@@ -90,25 +90,3 @@ function ReturnXi(dim, p)
     Network = JoinColors(Network, L)
     return  FindCorrelationLength(Network, S)
 end
-
-PList = hcat(0.5:0.005:0.6)
-PmaxList = []
-for n in 1:8
-    data = hcat(collect.(load("../../Data/Q2/Q2-$n-fc.jld")["data"])...)
-    XiList = []
-    for p in PList
-        TotXiList = data[findall(x-> x==p,data[2,:])]
-        push!(XiList, mean(TotXiList))
-    end
-    push!(PmaxList,PList[findfirst(x->x==max(XiList...),XiList)])
-end
-PmaxList
-
-
-data = hcat(collect.(load("../../Data/Q2/Q2-2-fc.jld")["data"])...)
-XiList = []
-for p in PList
-    TotXiList = data[findall(x-> x==p,data[2,:])]
-    push!(XiList, mean(TotXiList))
-end
-XiList
