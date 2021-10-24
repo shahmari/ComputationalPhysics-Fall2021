@@ -74,39 +74,41 @@ function FindCorrelationLength(Network, S)
     if length(Set(S)) <= 2
         return 0.0
     end
-    if findall(x->x==max(S...),S)[1] ∈ intersect(Network[1,:],Network[end,:])
-        BiggestFinite = findall(x->x==sort(S, rev=true)[2],S)[1]
+    if findfirst(x->x==max(S...),S) ∈ intersect(Network[1,:],Network[end,:])
+        BiggestFinite = findfirst(x->x==sort(S, rev=true)[2],S)
     else
-        BiggestFinite = findall(x->x==max(S...),S)[1]
+        BiggestFinite = findfirst(x->x==max(S...),S)
     end
-    BFiniteCluster = findall(x->x==BiggestFinite,Network)
+    BFiniteCluster = Tuple.(findall(x->x==BiggestFinite,Network))
     BFiniteClusterSize = length(BFiniteCluster)
-    dim = size(Network)[1]; ΣR² = 0.0; iMC = 0.0; jMC = 0.0
-    for indx in BFiniteCluster
-        iMC += indx[1]/BFiniteClusterSize
-        jMC += indx[2]/BFiniteClusterSize
-    end
-    for indx in BFiniteCluster
-        ΣR² += ((indx[1]-iMC)^2 + (indx[2]-jMC)^2)/BFiniteClusterSize
-    end
-    return sqrt(ΣR²)
+    MassCenter = reduce(.+, BFiniteCluster) ./ BFiniteClusterSize
+    return √(sum(pos -> reduce(.+, (pos .- MassCenter).^2),Tuple.(BFiniteCluster))/BFiniteClusterSize)
 end
 
-dimlist = [10,20,30,40,50,100,150,200,250,300]
-totalData = []
-for n in 1:length(dimlist)
-    dim = dimlist[n]
-    runnum = floor(Int,3600000/ (dim^2))
-    PList = hcat(0.5:0.001:0.6)
-    totalruns = []
-    for p in PList
-        for i in 1:runnum
-            Network, S, L = HKNetworkDynamic(dim, p)
-            Network = JoinColors(Network, L)
-            push!(totalruns, (FindCorrelationLength(Network, S),p))
-        end
-    end
-    print("\r$n")
-    push!(totalData, totalruns)
+function ReturnXi(dim, p)
+    Network, S, L = HKNetworkDynamic(dim, p)
+    Network = JoinColors(Network, L)
+    return  FindCorrelationLength(Network, S)
 end
-save("../../Data/Q2/Q2-totdata-fc.jld", "data", totalData)
+
+PList = hcat(0.5:0.005:0.6)
+PmaxList = []
+for n in 1:8
+    data = hcat(collect.(load("../../Data/Q2/Q2-$n-fc.jld")["data"])...)
+    XiList = []
+    for p in PList
+        TotXiList = data[findall(x-> x==p,data[2,:])]
+        push!(XiList, mean(TotXiList))
+    end
+    push!(PmaxList,PList[findfirst(x->x==max(XiList...),XiList)])
+end
+PmaxList
+
+
+data = hcat(collect.(load("../../Data/Q2/Q2-2-fc.jld")["data"])...)
+XiList = []
+for p in PList
+    TotXiList = data[findall(x-> x==p,data[2,:])]
+    push!(XiList, mean(TotXiList))
+end
+XiList
