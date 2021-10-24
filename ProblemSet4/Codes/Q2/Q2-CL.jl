@@ -90,69 +90,75 @@ runnumlist = [10000,5000,3000,2000,1000]
 PList = hcat(0:0.02:1)
 totalData = load("../../Data/Q2/Q2-totdata.jld")["data"]
 
-PList = hcat(0:0.02:1)
-scatter(dpi = 200)
-for i in 1:5
-    dim = dimlist[i]
-    runnum = runnumlist[i]
-    data = totalData[i]
-    scatter!(PList,data[1], yerr= data[2],label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs",markersize = 3)
+p1 = begin
+    scatter(dpi = 200)
+    for i in 1:5
+        dim = dimlist[i]
+        runnum = runnumlist[i]
+        data = totalData[i]
+        plot!(PList,data[1],linestyle = :dash, label = nothing, c = :black)
+        scatter!(PList,data[1],label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs",markersize = 3.5)
+    end
+    scatter!(
+        title = L"Correlation\ Length",
+        xlabel = L"P",
+        ylabel = L"\xi_{(P)}")
 end
-scatter!(
-    title = L"Correlation\ Length",
-    xlabel = L"P",
-    ylabel = L"\xi_{(P)}")
-savefig("../../Figs/Q2/CL1.pdf")
 
-
-plot(dpi = 200)
-for i in 1:5
-    dim = dimlist[i]
-    runnum = runnumlist[i]
-    data = totalData[i]
-    scatter!(PList,data[1],label = nothing,markersize = 3, c = :black, alpha = 0.5)
-    plot!(PList,data[1], label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
+p2 = begin
+    scatter(dpi = 200)
+    for i in 1:5
+        dim = dimlist[i]
+        runnum = runnumlist[i]
+        data = totalData[i]
+        scatter!(PList,data[1], ribbon= data[2],markersize = 1)
+        plot!(PList,data[1],legend = nothing, c = :black,linestyle = :dot)
+    end
+    scatter!(
+        title = L"Correlation\ Length",
+        xlabel = L"P",
+        ylabel = L"\xi_{(P)}")
 end
-scatter!(
-    title = L"Correlation\ Length",
-    xlabel = L"P",
-    ylabel = L"\xi_{(P)}")
-savefig("../../Figs/Q2/CL2.pdf")
 
+p3 = begin
+    plot(dpi = 200)
+    for i in 1:5
+        dim = dimlist[i]
+        runnum = runnumlist[i]
+        data = totalData[i]
+        scatter!(PList,data[1],label = nothing,markersize = 3, c = :black, alpha = 0.5)
+        plot!(PList,data[1], label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
+    end
+    scatter!(
+        title = L"Correlation\ Length",
+        xlabel = L"P",
+        ylabel = L"\xi_{(P)}")
+end
 
+totalData = load("../../Data/Q2/Q2-totdata-zoomed.jld")["data"]
 dimlist = [80,160]
 runnumlist = [2000,1000]
 PList = hcat(0.5:0.005:0.7)
-totalData = []
 
-plot()
-for i in 1:2
-    dim = dimlist[i]
-    runnum = runnumlist[i]
-    data = totalData[i]
-    scatter!(PList,data[1],label = nothing,markersize = 3, c = :black, alpha = 0.5)
-    plot!(PList,data[1], label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
+p4 = begin
+    plot()
+    col = [:purple,:steelblue]
+    for i in 1:2
+        dim = dimlist[i]
+        runnum = runnumlist[i]
+        data = totalData[i]
+        plot!(PList,data[1],c = :black, label = nothing)
+        scatter!(PList,data[1],ribbon =  data[2],yerr = data[2],label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs", c = col[i])
+    end
+    scatter!(
+        title = L"Correlation\ Length",
+        xlabel = L"P",
+        ylabel = L"\xi_{(P)}")
 end
-scatter!(
-    title = L"Correlation\ Length",
-    xlabel = L"P",
-    ylabel = L"\xi_{(P)}")
 savefig("../../Figs/Q2/CL3.pdf")
 
-
-plot()
-for i in 1:2
-    dim = dimlist[i]
-    runnum = runnumlist[i]
-    data = totalData[i]
-    scatter!(PList,data[1],ribbon =  data[2],yerr = data[2],label = L"Network\ %$dim\times%$dim,\ %$runnum\ runs")
-end
-scatter!(
-    title = L"Correlation\ Length",
-    xlabel = L"P",
-    ylabel = L"\xi_{(P)}")
-savefig("../../Figs/Q2/CL4.pdf")
-
+plot(plot(p2,p1, layout= (2,1)),p4,size = (1200,750))
+savefig("../../Figs/Q2/CL.pdf")
 
 # for n in 1:5
 #     dim = dimlist[n]

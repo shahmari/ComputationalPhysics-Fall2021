@@ -92,10 +92,12 @@ function ReturnXi(dim, p)
 end
 
 
-dimlist = [10,20,30,40,50,75,100,125,150]
-runlist = [2000,1500,750,500,250,125,100,75,50]
+# dimlist = [10,20,30,40,50,75,100,125,150]
+# runlist = [2000,1500,750,500,250,125,100,75,50]
+dimlist = [100,125,150]
+runlist = [100,75,50]
 PList = hcat(0.5:0.005:0.65)
-progress = Progress(length(PList)*sum(runlist))
+progress = Progress(length(PList)*sum(runlist); showspeed=true)
 for n in 1:length(dimlist)
     dim = dimlist[n]
     runnum = runlist[n]
@@ -107,10 +109,11 @@ for n in 1:length(dimlist)
         for i in 1:runnum
             push!(totalruns, ReturnXi(dim, p))
             next!(progress)
+            update!(progress)
         end
         push!(TopAvg,mean(sort(totalruns,rev = true)[1:Int(runnum/5)]))
         push!(AvgData,mean(totalruns))
         push!(STDData,std(totalruns))
     end
-    save("../../Data/Q2/Q2-$dim-fc.jld", "TopAvg", TopAvg, "AvgData", AvgData, "TopAvg", STDData)
+    save("../../Data/Q2/Q2-$dim-fc.jld", "TopAvg", TopAvg, "AvgData", AvgData, "STDData", STDData)
 end
