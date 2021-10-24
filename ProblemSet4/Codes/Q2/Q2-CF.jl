@@ -1,4 +1,4 @@
-using Plots, StatsBase, Statistics, LaTeXStrings, JLD
+using Plots, StatsBase, Statistics, LaTeXStrings, JLD, ProgressMeter
 
 function InitialNetwork(dim, P)
     Network = sample([-1,0], Weights([1-P, P]),(dim,dim))
@@ -89,4 +89,33 @@ function ReturnXi(dim, p)
     Network, S, L = HKNetworkDynamic(dim, p)
     Network = JoinColors(Network, L)
     return  FindCorrelationLength(Network, S)
+end
+
+
+dimlist = [10,20,30,40,50,75,100,125,150]
+PList = hcat(0.5:0.005:0.65)
+progress = Progress(length(PList)*length(dimlist))
+for dim in dimlist
+    runnum = 2500000/ dim^2
+    AvgData = []
+    for p in PList
+        totalruns = []
+        for i in 1:runnum
+            push!(totalruns, ReturnXi(dim, p))
+            print("\r$i    ")
+        end
+        push!(AvgData,mean)
+        next!(progress)
+    end
+    print("\r$n    ")
+    save("../../Data/Q2/Q2-$dim-fc.jld", "data", totalruns)
+end
+
+progress = Progress(300)
+for i in 1:3
+    for j in 1:100
+        sleep(0.075)
+        next!(progress)
+    end
+    sleep(0.5)
 end
