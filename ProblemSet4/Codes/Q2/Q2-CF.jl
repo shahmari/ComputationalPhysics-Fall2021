@@ -93,29 +93,24 @@ end
 
 
 dimlist = [10,20,30,40,50,75,100,125,150]
+runlist = [2000,1500,750,500,250,125,100,75,50]
 PList = hcat(0.5:0.005:0.65)
-progress = Progress(length(PList)*length(dimlist))
-for dim in dimlist
-    runnum = 2500000/ dim^2
+progress = Progress(length(PList)*sum(runlist))
+for n in 1:length(dimlist)
+    dim = dimlist[n]
+    runnum = runlist[n]
     AvgData = []
+    STDData = []
+    TopAvg = []
     for p in PList
         totalruns = []
         for i in 1:runnum
             push!(totalruns, ReturnXi(dim, p))
-            print("\r$i    ")
+            next!(progress)
         end
-        push!(AvgData,mean)
-        next!(progress)
+        push!(TopAvg,mean(sort(totalruns,rev = true)[1:Int(runnum/5)]))
+        push!(AvgData,mean(totalruns))
+        push!(STDData,std(totalruns))
     end
-    print("\r$n    ")
-    save("../../Data/Q2/Q2-$dim-fc.jld", "data", totalruns)
-end
-
-progress = Progress(300)
-for i in 1:3
-    for j in 1:100
-        sleep(0.075)
-        next!(progress)
-    end
-    sleep(0.5)
+    save("../../Data/Q2/Q2-$dim-fc.jld", "TopAvg", TopAvg, "AvgData", AvgData, "TopAvg", STDData)
 end
