@@ -1,4 +1,4 @@
-using Plots, StatsBase, Statistics, LaTeXStrings, JLD, ProgressMeter
+using Plots, StatsBase, Statistics, LaTeXStrings, JLD, ProgressMeter, LsqFit
 
 function InitialNetwork(dim, P)
     Network = sample([-1,0], Weights([1-P, P]),(dim,dim))
@@ -92,11 +92,9 @@ function ReturnXi(dim, p)
 end
 
 
-# dimlist = [10,20,30,40,50,75,100,125,150]
-# runlist = [2000,1500,750,500,250,125,100,75,50]
-dimlist = [100,125,150]
-runlist = [100,75,50]
-PList = hcat(0.5:0.005:0.65)
+dimlist = [10,20,30,40,50,75,100,125,150]
+runlist = [10000,5000,2000,1000,500,200,100,100,100]
+PList = hcat(0.52:0.001:0.62)
 progress = Progress(length(PList)*sum(runlist); showspeed=true)
 for n in 1:length(dimlist)
     dim = dimlist[n]
@@ -117,3 +115,37 @@ for n in 1:length(dimlist)
     end
     save("../../Data/Q2/Q2-$dim-fc.jld", "TopAvg", TopAvg, "AvgData", AvgData, "STDData", STDData)
 end
+
+Data = zeros(length(dimlist),length(PList),3)
+
+for n in 1:length(dimlist)
+    dim = dimlist[n]
+    data = load("../../Data/Q2/Q2-$dim-fc.jld")
+    Data[n,:,1] = data["TopAvg"]
+    Data[n,:,2] = data["AvgData"]
+    Data[n,:,3] = data["STDData"]
+end
+
+PmaxList = []
+for n in 1:length(dimlist)
+    push!(PmaxList, PList[findfirst(x->x==max(Data[n,:,2]...),Data[n,:,2])])
+end
+
+@. modelP∞(x, p) = abs(x - p[1])^(-1.2)
+@. modelν(x, p) = abs(x - 0.5927)^(-p[1])
+
+xdata = PmaxList
+ydata = dimlist
+InitP∞ = [0.5]
+Initν = [1.0]
+
+ν = curve_fit(modelν, xdata, ydata, Initν).param[1]
+P∞ = curve_fit(modelP∞, xdata, ydata, InitP∞).param[1]
+
+
+
+P∞range = hcat(0.52:0.001:0.59)
+νrange = abs.(P∞range .- P∞).^(-ν)
+# νrange = abs.(P∞range .- 0.604).^(-1.1)
+scatter(log.(PmaxList),log.(dimlist))
+plot!(log.(P∞range),log.(νrange))
