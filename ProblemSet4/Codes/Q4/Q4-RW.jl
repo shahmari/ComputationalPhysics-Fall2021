@@ -29,6 +29,8 @@ for n in 1:5
     push!(Avg,mean(RES[n]))
 end
 
+save("../../Data/Q4/Q4-RW.jld", "Data", RES)
+
 Line = round.(Linear_fit(PList,Avg))
 
 p1 = histogram(RES[1],bins = 50, label = L"P = %$(PList[1]), \ l = \tau = 1", xlabel=L"\langle X_{final} \rangle_{(P)}", ylabel = L"Number", c = :steelblue)
