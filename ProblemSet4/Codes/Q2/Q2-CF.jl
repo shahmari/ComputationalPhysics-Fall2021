@@ -92,15 +92,14 @@ function ReturnXi(dim, p)
 end
 
 
-# dimlist = [10,20,30,40,50,75,100,125,150]
+dimlist = [10,15,20,25,30,35,40,45,50,55,60,65,70,75,100,125,150]
 # runlist = [10000,5000,2000,1000,500,200,100,100,100]
-dimlist = [15,25,35,45,55,60,65,70]
 PList = hcat(0.52:0.001:0.62)
-progress = Progress(length(PList)*10000*length(dimlist); showspeed=true)
+runnum = 100
+progress = Progress(length(PList)*runnum*length(dimlist); showspeed=true)
 # progress = Progress(length(PList)*sum(runlist); showspeed=true)
 for n in 1:length(dimlist)
     dim = dimlist[n]
-    runnum = 10000
     AvgData = []
     STDData = []
     TopAvg = []
@@ -121,6 +120,7 @@ end
 Data = zeros(length(dimlist),length(PList),3)
 
 for n in 1:length(dimlist)
+    print("\r$n")
     dim = dimlist[n]
     data = load("../../Data/Q2/Q2-$dim-fc.jld")
     Data[n,:,1] = data["TopAvg"]
@@ -138,14 +138,14 @@ end
 
 xdata = PmaxList
 ydata = dimlist
-InitP∞ = [0.6]
-Initν = [2.0]
+InitP∞ = [0.59]
+Initν = [1.2]
 
 ν = curve_fit(modelν, xdata, ydata, Initν).param[1]
 P∞ = curve_fit(modelP∞, xdata, ydata, InitP∞).param[1]
 
 
-P∞range = hcat(0.52:0.001:0.593)
+P∞range = hcat(0.52:0.001:0.596)
 νrange = abs.(P∞range .- P∞).^(-ν)
 
 scatter(PmaxList,dimlist, label=L"Data\ Points", title=L"Curve\ fitting\ Plot\ (\nu = %$(round(ν,digits= 2)) ,\ Pc_{\infty} = %$(round(P∞,digits= 2)))",legend = 150)
