@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  28 OCT 2021 18:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  28 OCT 2021 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -261,23 +261,82 @@ File: ../Figs///Q2/Q2-CF-res.pdf Graphic file (type pdf)
 <use ../Figs///Q2/Q2-CF-res.pdf>
 Package pdftex.def Info: ../Figs///Q2/Q2-CF-res.pdf  used on input line 72.
 (pdftex.def)             Requested size: 210.79065pt x 140.5271pt.
- [2 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q2/CL.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q2/Q2-CF-res.pdf>] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/report.aux)
+ [2 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q2/CL.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q2/Q2-CF-res.pdf>]
+<../Figs///Q3/Q3-S-violon.pdf, id=35, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-S-violon.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-S-violon.pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-S-violon.pdf  used on input line 89.
+(pdftex.def)             Requested size: 150.56212pt x 100.37474pt.
+<../Figs///Q3/Q3-XI-violon.pdf, id=36, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-XI-violon.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-XI-violon.pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-XI-violon.pdf  used on input line 91.
+(pdftex.def)             Requested size: 150.56212pt x 100.37474pt.
+<../Figs///Q3/Q3-XI-hist.pdf, id=37, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-XI-hist.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-XI-hist.pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-XI-hist.pdf  used on input line 93.
+(pdftex.def)             Requested size: 150.56212pt x 100.37474pt.
+<../Figs///Q3/Q3-S-hist.pdf, id=38, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-S-hist.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-S-hist.pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-S-hist.pdf  used on input line 95.
+(pdftex.def)             Requested size: 150.56212pt x 100.37474pt.
+<../Figs///Q3/Q3-S-XI.jpg, id=39, 602.25pt x 401.70074pt>
+File: ../Figs///Q3/Q3-S-XI.jpg Graphic file (type jpg)
+<use ../Figs///Q3/Q3-S-XI.jpg>
+Package pdftex.def Info: ../Figs///Q3/Q3-S-XI.jpg  used on input line 102.
+(pdftex.def)             Requested size: 150.56212pt x 100.42493pt.
+<../Figs///Q3/Q3-S-XI-Avg.pdf, id=40, 602.25pt x 401.5pt>
+File: ../Figs///Q3/Q3-S-XI-Avg.pdf Graphic file (type pdf)
+<use ../Figs///Q3/Q3-S-XI-Avg.pdf>
+Package pdftex.def Info: ../Figs///Q3/Q3-S-XI-Avg.pdf  used on input line 104.
+(pdftex.def)             Requested size: 150.56212pt x 100.37474pt.
+ [3 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-S-violon.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-XI-violon.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-XI-hist.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-S-hist.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-S-XI.jpg> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q3/Q3-S-XI-Avg.pdf>]
+<../Figs///Q4/Q4-tot.pdf, id=53, 1003.75pt x 1003.75pt>
+File: ../Figs///Q4/Q4-tot.pdf Graphic file (type pdf)
+<use ../Figs///Q4/Q4-tot.pdf>
+Package pdftex.def Info: ../Figs///Q4/Q4-tot.pdf  used on input line 123.
+(pdftex.def)             Requested size: 301.12732pt x 301.12732pt.
+ [4 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q4/Q4-tot.pdf>]
+<../Figs///Q5/Q5-scat.pdf, id=63, 853.1875pt x 692.5875pt>
+File: ../Figs///Q5/Q5-scat.pdf Graphic file (type pdf)
+<use ../Figs///Q5/Q5-scat.pdf>
+Package pdftex.def Info: ../Figs///Q5/Q5-scat.pdf  used on input line 143.
+(pdftex.def)             Requested size: 213.29636pt x 173.14644pt.
+<../Figs///Q5/Q5-cont.pdf, id=64, 803.0pt x 602.25pt>
+File: ../Figs///Q5/Q5-cont.pdf Graphic file (type pdf)
+<use ../Figs///Q5/Q5-cont.pdf>
+Package pdftex.def Info: ../Figs///Q5/Q5-cont.pdf  used on input line 150.
+(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
+ [5 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q5/Q5-scat.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q5/Q5-cont.pdf>]
+<../Figs///Q6/Q6-scat.pdf, id=74, 853.1875pt x 692.5875pt>
+File: ../Figs///Q6/Q6-scat.pdf Graphic file (type pdf)
+<use ../Figs///Q6/Q6-scat.pdf>
+Package pdftex.def Info: ../Figs///Q6/Q6-scat.pdf  used on input line 167.
+(pdftex.def)             Requested size: 213.29636pt x 173.14644pt.
+<../Figs///Q6/Q6-LT.pdf, id=75, 602.25pt x 501.875pt>
+File: ../Figs///Q6/Q6-LT.pdf Graphic file (type pdf)
+<use ../Figs///Q6/Q6-LT.pdf>
+Package pdftex.def Info: ../Figs///Q6/Q6-LT.pdf  used on input line 174.
+(pdftex.def)             Requested size: 210.79065pt x 175.65887pt.
+ [6 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q6/Q6-scat.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/../Figs///Q6/Q6-LT.pdf>] [7] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7937 strings out of 479302
- 119105 string characters out of 5871204
- 404913 words of memory out of 5000000
- 25031 multiletter control sequences out of 15000+600000
+ 8045 strings out of 479302
+ 121492 string characters out of 5871204
+ 405257 words of memory out of 5000000
+ 25107 multiletter control sequences out of 15000+600000
  407378 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,7n,74p,291b,321s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/report.pdf (2 pages, 309033 bytes).
+ 71i,7n,74p,346b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet4/TEXfiles/report.pdf (7 pages, 1033385 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

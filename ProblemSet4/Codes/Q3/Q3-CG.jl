@@ -168,7 +168,7 @@ end
 scatter(log.(XData), log.(YData),markersize = 2,
     alpha = 0.01, markerstrokewidth=0)
 scatter!(title = L"Total\ Data\ (0.5>P>0.65,\ 10000\ runs\ for\ each\ P)",
-    legend = nothing, xlabel = L"\xi_{(P)}", ylabel = L"S_{(P)}")
+    legend = nothing, ylabel = L"\xi_{(P)}", xlabel = L"S_{(P)}")
 savefig("../../Figs/Q3/Q3-S-XI.pdf")
 
 Line = Linear_fit(log.(AvgXiList)[1:end-3],log.(AvgSList)[1:end-3])
@@ -178,5 +178,5 @@ Y = X .* Line[1,1] .+ Line[2,1]
 plot(X,Y, label = L"Y = %$(round(Line[1],digits=3))\dot X + %$(round(Line[2],digits=3))", line = :dash, c = :black)
 scatter!(log.(AvgXiList), log.(AvgSList),c = :steelblue, label = L"Data\ Point")
 scatter!(title = L"Average\ Data\ (0.5>P>0.65,\ 10000\ runs\ for\ each\ P)",
-    xlabel = L"\xi_{(P)}", ylabel = L"S_{(P)}")
+    ylabel = L"\xi_{(P)}", xlabel = L"S_{(P)}")
 savefig("../../Figs/Q3/Q3-S-XI-Avg.pdf")
