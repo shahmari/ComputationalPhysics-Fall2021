@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1634246908 "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.tex" "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf" "report" 1634246909
+["pdflatex"] 1635315817 "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.tex" "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf" "report" 1635315819
   "../Figs///Q1/Graphic.pdf" 1633713028 33093 250d4d578ad5aceea8f603ad6942061d ""
   "../Figs///Q1/H-t(L=100).pdf" 1633721173 25325 3b37d4bd5d24c4e261cfe29d41d7e879 ""
   "../Figs///Q1/H-t(L=200).pdf" 1633721230 27199 c62b677cdc426d5ec295dfa954bd0928 ""
@@ -27,8 +27,8 @@
   "../Figs///Q7/100x100-10000.pdf" 1634153161 25079 829441fb566a4e71891f2761c00d5fb3 ""
   "../Figs///Q7/10x10.pdf" 1634143296 26804 21e0faf01f6d82be4e5f7fca15060f02 ""
   "../Figs///Q7/200x200-10000.pdf" 1634196760 26077 95038ed263bd27ae1f735cab0aa614b5 ""
-  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux" 1634246909 4744 cb632f9622721244d6f015be3abcaaab ""
-  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.tex" 1634246907 12167 f963fd45fb2e9612c11b77fa1bc41d30 ""
+  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux" 1635315819 4744 cb632f9622721244d6f015be3abcaaab ""
+  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.tex" 1635315815 12167 a4f0a49e24612ad5e03f0ca3bb5b75ce ""
   "c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1613167317 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1613168931 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1613168350 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -105,13 +105,13 @@
   "c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1613174608 5211899 7e5f44963a72b7e1a2e8e6ad702159ca ""
   "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1613174703 2568196 33b856113b23966488230282ecc715b8 ""
   "c:/texlive/2020/texmf.cnf" 1613174587 713 e69b156964470283e0530f5060668171 ""
-  "report.aux" 1634246909 4744 cb632f9622721244d6f015be3abcaaab "pdflatex"
-  "report.out" 1634246909 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "report.tex" 1634246907 12167 f963fd45fb2e9612c11b77fa1bc41d30 ""
+  "report.aux" 1635315819 4744 cb632f9622721244d6f015be3abcaaab "pdflatex"
+  "report.out" 1635315818 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "report.tex" 1635315815 12167 a4f0a49e24612ad5e03f0ca3bb5b75ce ""
   (generated)
-  "report.log"
-  "report.aux"
-  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.log"
-  "report.pdf"
   "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf"
+  "report.aux"
+  "report.log"
   "report.out"
+  "report.pdf"
+  "c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.log"

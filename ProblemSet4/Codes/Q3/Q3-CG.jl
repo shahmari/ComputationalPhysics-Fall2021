@@ -154,12 +154,14 @@ for data in AllData
     push!(STDXiList,std(temxipdata))
 end
 
+AllData = load("../../Data/Q3/Q3-xi-S-CG.jld")["data"]
+
 XData = []
 YData = []
 for data in AllData
     for tup in data
-        push!(XData,tup[2])
-        push!(YData,tup[1])
+        push!(XData,tup[1])
+        push!(YData,tup[2])
     end
 end
 
@@ -169,12 +171,12 @@ scatter!(title = L"Total\ Data\ (0.5>P>0.65,\ 10000\ runs\ for\ each\ P)",
     legend = nothing, xlabel = L"\xi_{(P)}", ylabel = L"S_{(P)}")
 savefig("../../Figs/Q3/Q3-S-XI.pdf")
 
-Line = Linear_fit(log.(AvgSList)[1:end-3],log.(AvgXiList)[1:end-3])
-X = hcat(log.(AvgSList)[1]:(log.(AvgSList)[end]-log.(AvgSList)[1])/20:log.(AvgSList)[end])
+Line = Linear_fit(log.(AvgXiList)[1:end-3],log.(AvgSList)[1:end-3])
+X = hcat(log.(AvgXiList)[1]:(log.(AvgXiList)[end]-log.(AvgXiList)[1])/20:log.(AvgXiList)[end])
 Y = X .* Line[1,1] .+ Line[2,1]
 
 plot(X,Y, label = L"Y = %$(round(Line[1],digits=3))\dot X + %$(round(Line[2],digits=3))", line = :dash, c = :black)
-scatter!(log.(AvgSList), log.(AvgXiList),c = :steelblue, label = L"Data\ Point")
+scatter!(log.(AvgXiList), log.(AvgSList),c = :steelblue, label = L"Data\ Point")
 scatter!(title = L"Average\ Data\ (0.5>P>0.65,\ 10000\ runs\ for\ each\ P)",
     xlabel = L"\xi_{(P)}", ylabel = L"S_{(P)}")
 savefig("../../Figs/Q3/Q3-S-XI-Avg.pdf")
