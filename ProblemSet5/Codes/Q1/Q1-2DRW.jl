@@ -37,6 +37,10 @@ TotalSteps = 40
 RWNumbers = 100
 R₀ = [0,0]
 
+histogram2d(collect(Tuple(Data[end,:,i]) for i ∈ 1:1000), nbins = 20,framestyle = :box, background=:steelblue)
+scatter!(collect(Tuple(Data[i,:]) for i ∈ 1:TotalSteps))
 
-
-scatter(ReturnEnsemble(TotalSteps,RWNumbers,R₀))
+Data = zeros(1000,1000,2)
+Data[i,:,:] for i = 1:1000 .= RandomWalker2D(1000, R₀)
+Data = cat([RandomWalker2D(10000, R₀) for i = 1:1000]...; dims = 3)
+Data[end,:,:]
