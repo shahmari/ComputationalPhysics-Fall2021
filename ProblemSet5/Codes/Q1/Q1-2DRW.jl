@@ -40,14 +40,6 @@ for TotalSteps in TStepsList
 end
 save("../../Data/Q1/Q1-2DHist.jld", "Data", Data)
 
-Data
-
-
-RgList = [RGyration(Data[:,i,:],RWNumbers) for i ∈ 1:TotalSteps]
-
-
-
-
 #Plot section
 
 scatter(RgList.^2)
