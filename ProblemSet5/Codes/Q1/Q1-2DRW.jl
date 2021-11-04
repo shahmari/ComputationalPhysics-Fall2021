@@ -6,12 +6,6 @@ using ProgressBars, Plots, StatsBase, Statistics, LaTeXStrings, JLD
     return reduce(.+,TotalWalks) .+ R₀
 end
 
-
-function RGyration(ensemble,RWNumbers)
-    TotalR = collect(Tuple(ensemble[i,:]) for i ∈ 1:RWNumbers)
-    MassCenter = (mean(TotalR[1]),mean(TotalR[2]))
-    return √(sum(pos -> reduce(.+, (pos .- MassCenter).^2), TotalR)/RWNumbers)
-end
 #=
 function PlotHeatmap(Data, RWNumbers) #useless piece of shit
     Tuples = collect(Tuple(Data[i,:]) for i ∈ 1:RWNumbers)
