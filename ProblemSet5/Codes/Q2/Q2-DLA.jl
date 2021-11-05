@@ -1,9 +1,10 @@
+using ProgressBars, Plots, StatsBase, Statistics, LaTeXStrings, JLD
 
 #Diffusion-limited aggregation
-function Deposing(;Network,RWpos,cap,ParticlesNumber,colorstep,H1_0,H1,H2)
+function Deposing(;Network,RWpos,cap,ParticlesNumber,H1_0,H1,H2)
     Network[RWpos...,2] += 1
     if Network[RWpos...,2] == cap
-        Network[RWpos...,1] = ParticlesNumber % colorstep
+        Network[RWpos...,1] = ParticlesNumber
         H1 = max(RWpos[2] + H1_0, H1)
         H2 = H1 + 5
     end
@@ -22,7 +23,7 @@ function NewRWpos(RWpos,L)
     return retRWpos
 end
 
-function DLASimulation(L, colorstep, H1_0, cap)
+function DLASimulation(L, H1_0, cap)
     choices = ((1,0),(0,1),(-1,0),(0,-1))
     Network = zeros(L,floor(Int,L/2),2)
     Network[:,1,1] = ones(L)
@@ -41,7 +42,7 @@ function DLASimulation(L, colorstep, H1_0, cap)
             if RWpos[2] <= H1 - H1_0 + 2
                 Parameters = Dict(:Network => Network, :RWpos => RWpos,
                                     :cap => cap, :ParticlesNumber => ParticlesNumber,
-                                        :colorstep => colorstep, :H1_0 => H1_0, :H1 => H1, :H2 => H2)
+                                        :H1_0 => H1_0, :H1 => H1, :H2 => H2)
                 for neighbor in ((1,0),(0,1),(-1,0),(0,-1))
                     if RWpos[1] + neighbor[1] == 0
                         if Network[L,RWpos[2] + neighbor[2],1] != 0
@@ -65,10 +66,10 @@ function DLASimulation(L, colorstep, H1_0, cap)
 end
 
 L = 200
-colorstep = 3
+colorstep = 400
 H1_0 = 20
-cap = 5
+cap = 2
 
-Network = DLASimulation(L, colorstep, H1_0, cap)
+Network = DLASimulation(L, H1_0, cap)
 
-heatmap(rotr90(Network[:,:,1]))
+heatmap(rotr90(Network[:,:,1]), c = cgrad(:turbo, rev = false))
