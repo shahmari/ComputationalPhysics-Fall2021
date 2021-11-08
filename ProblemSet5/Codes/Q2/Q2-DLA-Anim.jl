@@ -25,6 +25,7 @@ end
 
 function DLASimulation(L, H1_0, cap)
     choices = ((1,0),(0,1),(-1,0),(0,-1))
+    Frames = []
     Network = zeros(L,floor(Int,L/2),2)
     Network[:,1,1] = ones(L)
     H2_0 = H1_0 + 5
@@ -35,6 +36,7 @@ function DLASimulation(L, H1_0, cap)
     while H2 < floor(Int,L/2)
         ParticlesNumber += 1
         print("\r$ParticlesNumber   $H2     ")
+        push!(Frames,Network[:,:,1])
         RWpos = [rand(1:L), H1]
         check = true
         while RWpos[2] < H2 && check
@@ -62,15 +64,23 @@ function DLASimulation(L, H1_0, cap)
             end
         end
     end
-    return Network, ParticlesNumber
+    return Frames
 end
 
 L = 200
 H1_0 = 10
 cap = 3
 
-Network, ParticlesNumber = DLASimulation(L, H1_0, cap)
-save("../../Data/Q2/Q2-HM.jld", "Network", Network)
-heatmap(rotr90(Network[:,:,1]), c = cgrad(:turbo, rev = false), legend = nothing,
-    title = L"Distribution\ of\ %$ParticlesNumber\ RW\ in\ DLA")
+Frames = DLASimulation(L, H1_0, cap)
+save("../../Data/Q2/Q2-Frames.jld", "Frames", Frames)
+
+anim = Animation()
+
+for n in ProgressBar(1:100:length(Frames))
+    frame(anim, heatmap(rotr90(Frames[n]), c = cgrad(:turbo, rev = false), legend = nothing,
+        title = L"Distribution\ of\ %$n\ RW\ in\ SAW"))
+end
+
+gif(anim, "../../Figs/Q2/Q2-HM.gif", fps = 100)
+
 savefig("../../Figs/Q2/Q2-HM.pdf")
