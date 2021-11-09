@@ -19,8 +19,11 @@ end
 
 N = 10^6
 TotRandoms = resultsPart1(N)
-histogram(TotRandoms, bins = -0.5:9.5, xticks = 0:9, legend = nothing, framestyle = :box, c = :steelblue)
-plot!([-0.5,9.5],[N/10,N/10], linestyle = :dash, c = :black, linewidth = 4)
+
+plot([-0.5,9.5],[N/10,N/10], linestyle = :dash, label = L"Y = \frac{N}{10}", c = :black, linewidth = 4, ylims = (-5000,1.35*10^5))
+histogram!(TotRandoms, bins = -0.5:9.5, xticks = 0:9, label = L"Histogram", framestyle = :box, c = :steelblue)
+plot!(xlabel = L"Number", ylabel = L"Count",title = L"%$N\ Random\ Numbers\ in\ [0, 9]")
+savefig("../../Figs/Q4/Q4-Hist.pdf")
 
 #=====================##=====================##=====================#
 
