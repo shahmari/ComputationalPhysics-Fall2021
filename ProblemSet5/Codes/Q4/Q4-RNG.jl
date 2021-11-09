@@ -1,11 +1,11 @@
 using ProgressBars, Plots, StatsBase, Statistics, LaTeXStrings, JLD
 
 function resultsPart1(N)
-    return [rand(0:9) for n ∈ 1:N]
+    return rand(0:9,N)
 end
 
 function resultsPart2(N)
-    TotRandoms = [rand(0:9) for n ∈ 1:N]
+    TotRandoms = rand(0:9,N)
     TotRandNumbers = [length(findall(x->x==n,TotRandoms)) for n ∈ 0:9]
     return std(TotRandNumbers)/N
 end
