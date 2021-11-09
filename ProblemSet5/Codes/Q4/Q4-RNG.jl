@@ -28,20 +28,21 @@ savefig("../../Figs/Q4/Q4-Hist.pdf")
 #=====================##=====================##=====================#
 
 
-span = ceil.(Int,exp.(2:0.25:10))
-Data = zeros(1000,length(span))
+span_ = ceil.(Int,exp.(2:0.25:10))
+Data = zeros(1000,length(span_))
 
 for n in ProgressBar(1:1000)
-    Data[n,:] = [resultsPart2(N) for N in span]
+    Data[n,:] = [resultsPart2(N) for N in span_]
 end
 
-CVList = [mean(Data[:,n]) for n ∈ 1:length(span)]
-Line = Linear_fit(log.(span),log.(CVList))
-X = log.(span)
+CVList = [mean(Data[:,n]) for n ∈ 1:length(span_)]
+Line = Linear_fit(log.(span_),log.(CVList))
+X = log.(span_)
 Y = X .* Line[1,1] .+ Line[2,1]
 
 
 plot(X,Y, label = L"Y = %$(round(Line[1],digits=3))\ X + %$(round(Line[2],digits=3))", line = :dash, c = :black)
-scatter!(log.(span), log.(CVList),label = L"Data\ Point", framestyle = :box, c = :steelblue)
+scatter!(log.(span_), log.(CVList),label = L"Data\ Point", framestyle = :box, c = :steelblue)
 scatter!(title = L"log-log\ Plot\ CV-N\ (e^2>N>e^{10},\ 10000\ runs)",
     ylabel = L"ln_{(CV_{(N)})}", xlabel = L"ln_{(N)}")
+savefig("../../Figs/Q4/Q4-Scat.pdf")
