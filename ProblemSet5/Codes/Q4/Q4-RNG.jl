@@ -19,6 +19,7 @@ end
 
 N = 10^6
 TotRandoms = resultsPart1(N)
+save("../../Data/Q4/Q4-hist.jld", "Data", TotRandoms)
 
 plot([-0.5,9.5],[N/10,N/10], linestyle = :dash, label = L"Y = \frac{N}{10}", c = :black, linewidth = 4, ylims = (-5000,1.35*10^5))
 histogram!(TotRandoms, bins = -0.5:9.5, xticks = 0:9, label = L"Histogram", framestyle = :box, c = :steelblue)
@@ -40,6 +41,7 @@ Line = Linear_fit(log.(span_),log.(CVList))
 X = log.(span_)
 Y = X .* Line[1,1] .+ Line[2,1]
 
+save("../../Data/Q4/Q4-CV.jld", "Data", CVList)
 
 plot(X,Y, label = L"Y = %$(round(Line[1],digits=3))\ X + %$(round(Line[2],digits=3))", line = :dash, c = :black)
 scatter!(log.(span_), log.(CVList),label = L"Data\ Point", framestyle = :box, c = :steelblue)
