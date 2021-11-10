@@ -1,5 +1,7 @@
 using ProgressBars, Plots, StatsBase, Statistics, LaTeXStrings, JLD
 
+choices = ((1,0),(0,1),(-1,0),(0,-1))
+
 #Diffusion-limited aggregation
 function Deposing(;Network,RWpos,cap,ParticlesNumber,H1_0,H1,H2)
     Network[RWpos...,2] += 1
@@ -13,7 +15,6 @@ function Deposing(;Network,RWpos,cap,ParticlesNumber,H1_0,H1,H2)
 end
 
 function NewRWpos(RWpos,L)
-    choices = ((1,0),(0,1),(-1,0),(0,-1))
     retRWpos = RWpos .+ rand(choices)
     if retRWpos[1] == L +1
         retRWpos[1] = 1
@@ -24,7 +25,6 @@ function NewRWpos(RWpos,L)
 end
 
 function DLASimulation(L, H1_0, cap)
-    choices = ((1,0),(0,1),(-1,0),(0,-1))
     Network = zeros(L,floor(Int,L/2),2)
     Network[:,1,1] = ones(L)
     H2_0 = H1_0 + 5
@@ -43,7 +43,7 @@ function DLASimulation(L, H1_0, cap)
                 Parameters = Dict(:Network => Network, :RWpos => RWpos,
                                     :cap => cap, :ParticlesNumber => ParticlesNumber,
                                         :H1_0 => H1_0, :H1 => H1, :H2 => H2)
-                for neighbor in ((1,0),(0,1),(-1,0),(0,-1))
+                for neighbor in choices
                     if RWpos[1] + neighbor[1] == 0
                         if Network[L,RWpos[2] + neighbor[2],1] != 0
                             Network, H1, H2, check = Deposing(;Parameters...)

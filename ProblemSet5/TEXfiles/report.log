@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  10 NOV 2021 10:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  10 NOV 2021 17:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -297,25 +297,50 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
  (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<../Figs///Q1/Q1-Rg(t).pdf, id=4, 602.25pt x 401.5pt>
+File: ../Figs///Q1/Q1-Rg(t).pdf Graphic file (type pdf)
+<use ../Figs///Q1/Q1-Rg(t).pdf>
+Package pdftex.def Info: ../Figs///Q1/Q1-Rg(t).pdf  used on input line 40.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
+<../Figs///Q1/Q1-2DHist1.pdf, id=5, 602.25pt x 401.5pt>
+File: ../Figs///Q1/Q1-2DHist1.pdf Graphic file (type pdf)
+<use ../Figs///Q1/Q1-2DHist1.pdf>
+Package pdftex.def Info: ../Figs///Q1/Q1-2DHist1.pdf  used on input line 47.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
+<../Figs///Q1/Q1-2DHist2.pdf, id=6, 602.25pt x 401.5pt>
+File: ../Figs///Q1/Q1-2DHist2.pdf Graphic file (type pdf)
+<use ../Figs///Q1/Q1-2DHist2.pdf>
+Package pdftex.def Info: ../Figs///Q1/Q1-2DHist2.pdf  used on input line 49.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
+<../Figs///Q1/Q1-2DHist3.pdf, id=7, 602.25pt x 401.5pt>
+File: ../Figs///Q1/Q1-2DHist3.pdf Graphic file (type pdf)
+<use ../Figs///Q1/Q1-2DHist3.pdf>
+Package pdftex.def Info: ../Figs///Q1/Q1-2DHist3.pdf  used on input line 51.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
+ [1
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/report.aux)
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/../Figs///Q1/Q1-Rg(t).pdf>]
+
+LaTeX Warning: Text page 2 contains only floats.
+
+[2 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/../Figs///Q1/Q1-2DHist1.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/../Figs///Q1/Q1-2DHist2.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/../Figs///Q1/Q1-2DHist3.pdf>] [3] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9633 strings out of 479302
- 137395 string characters out of 5871204
- 427889 words of memory out of 5000000
- 26690 multiletter control sequences out of 15000+600000
- 409287 words of font info for 49 fonts, out of 8000000 for 9000
+ 9681 strings out of 479302
+ 138403 string characters out of 5871204
+ 431011 words of memory out of 5000000
+ 26727 multiletter control sequences out of 15000+600000
+ 410986 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,6n,89p,409b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/report.pdf (2 pages, 61803 bytes).
+ 81i,10n,89p,409b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet5/TEXfiles/report.pdf (3 pages, 242149 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 82 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
