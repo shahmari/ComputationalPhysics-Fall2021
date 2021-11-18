@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  27 OCT 2021 09:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.13)  18 NOV 2021 17:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -287,116 +287,116 @@ Package pdftex.def Info: ../Figs///Q1/W-t(L=300).pdf  used on input line 86.
 File: ../Figs///Q2/Graphic.pdf Graphic file (type pdf)
 <use ../Figs///Q2/Graphic.pdf>
 Package pdftex.def Info: ../Figs///Q2/Graphic.pdf  used on input line 139.
-(pdftex.def)             Requested size: 301.12425pt x 200.7495pt.
+(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
 <../Figs///Q2/H-t(L=50).pdf, id=56, 602.25pt x 401.5pt>
 File: ../Figs///Q2/H-t(L=50).pdf Graphic file (type pdf)
 <use ../Figs///Q2/H-t(L=50).pdf>
 Package pdftex.def Info: ../Figs///Q2/H-t(L=50).pdf  used on input line 154.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/W-t(L=50).pdf, id=57, 602.25pt x 401.5pt>
 File: ../Figs///Q2/W-t(L=50).pdf Graphic file (type pdf)
 <use ../Figs///Q2/W-t(L=50).pdf>
 Package pdftex.def Info: ../Figs///Q2/W-t(L=50).pdf  used on input line 156.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/H-t(L=100).pdf, id=58, 602.25pt x 401.5pt>
 File: ../Figs///Q2/H-t(L=100).pdf Graphic file (type pdf)
 <use ../Figs///Q2/H-t(L=100).pdf>
 Package pdftex.def Info: ../Figs///Q2/H-t(L=100).pdf  used on input line 162.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/W-t(L=100).pdf, id=59, 602.25pt x 401.5pt>
 File: ../Figs///Q2/W-t(L=100).pdf Graphic file (type pdf)
 <use ../Figs///Q2/W-t(L=100).pdf>
 Package pdftex.def Info: ../Figs///Q2/W-t(L=100).pdf  used on input line 164.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/H-t(L=200).pdf, id=60, 602.25pt x 401.5pt>
 File: ../Figs///Q2/H-t(L=200).pdf Graphic file (type pdf)
 <use ../Figs///Q2/H-t(L=200).pdf>
 Package pdftex.def Info: ../Figs///Q2/H-t(L=200).pdf  used on input line 170.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/W-t(L=200).pdf, id=61, 602.25pt x 401.5pt>
 File: ../Figs///Q2/W-t(L=200).pdf Graphic file (type pdf)
 <use ../Figs///Q2/W-t(L=200).pdf>
 Package pdftex.def Info: ../Figs///Q2/W-t(L=200).pdf  used on input line 172.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/H-t(L=300).pdf, id=62, 602.25pt x 401.5pt>
 File: ../Figs///Q2/H-t(L=300).pdf Graphic file (type pdf)
 <use ../Figs///Q2/H-t(L=300).pdf>
 Package pdftex.def Info: ../Figs///Q2/H-t(L=300).pdf  used on input line 178.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
 <../Figs///Q2/W-t(L=300).pdf, id=63, 602.25pt x 401.5pt>
 File: ../Figs///Q2/W-t(L=300).pdf Graphic file (type pdf)
 <use ../Figs///Q2/W-t(L=300).pdf>
 Package pdftex.def Info: ../Figs///Q2/W-t(L=300).pdf  used on input line 180.
-(pdftex.def)             Requested size: 170.4392pt x 113.62613pt.
- [4 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/Graphic.pdf>] [5 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=200).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=200).pdf>]
-<../Figs///Q3/Graphic.pdf, id=89, 602.25pt x 401.5pt>
+(pdftex.def)             Requested size: 162.60966pt x 108.40643pt.
+ [4 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/Graphic.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=50).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=50).pdf>] [5 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=100).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=200).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=200).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=300).pdf>] [6]
+<../Figs///Q3/Graphic.pdf, id=96, 602.25pt x 401.5pt>
 File: ../Figs///Q3/Graphic.pdf Graphic file (type pdf)
 <use ../Figs///Q3/Graphic.pdf>
-Package pdftex.def Info: ../Figs///Q3/Graphic.pdf  used on input line 236.
+Package pdftex.def Info: ../Figs///Q3/Graphic.pdf  used on input line 240.
 (pdftex.def)             Requested size: 301.12425pt x 200.7495pt.
-<../Figs///Q3/Q3-L(t).pdf, id=90, 602.25pt x 401.5pt>
+<../Figs///Q3/Q3-L(t).pdf, id=97, 602.25pt x 401.5pt>
 File: ../Figs///Q3/Q3-L(t).pdf Graphic file (type pdf)
 <use ../Figs///Q3/Q3-L(t).pdf>
-Package pdftex.def Info: ../Figs///Q3/Q3-L(t).pdf  used on input line 244.
-(pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
- [6 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/H-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q2/W-t(L=300).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Graphic.pdf>]
-<../Figs///Q4/Q4.pdf, id=102, 462.52798pt x 346.89601pt>
+Package pdftex.def Info: ../Figs///Q3/Q3-L(t).pdf  used on input line 248.
+(pdftex.def)             Requested size: 301.12425pt x 200.7495pt.
+ [7 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Graphic.pdf>]
+<../Figs///Q4/Q4.pdf, id=107, 462.52798pt x 346.89601pt>
 File: ../Figs///Q4/Q4.pdf Graphic file (type pdf)
 <use ../Figs///Q4/Q4.pdf>
-Package pdftex.def Info: ../Figs///Q4/Q4.pdf  used on input line 263.
+Package pdftex.def Info: ../Figs///Q4/Q4.pdf  used on input line 268.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
- [7 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Q3-L(t).pdf>]
-<../Figs///Q6/10x10.pdf, id=111, 602.25pt x 401.5pt>
+ [8 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q3/Q3-L(t).pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q4/Q4.pdf>]
+<../Figs///Q6/10x10.pdf, id=154, 602.25pt x 401.5pt>
 File: ../Figs///Q6/10x10.pdf Graphic file (type pdf)
 <use ../Figs///Q6/10x10.pdf>
-Package pdftex.def Info: ../Figs///Q6/10x10.pdf  used on input line 287.
+Package pdftex.def Info: ../Figs///Q6/10x10.pdf  used on input line 292.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
-<../Figs///Q6/100x100.pdf, id=112, 602.25pt x 401.5pt>
+<../Figs///Q6/100x100.pdf, id=155, 602.25pt x 401.5pt>
 File: ../Figs///Q6/100x100.pdf Graphic file (type pdf)
 <use ../Figs///Q6/100x100.pdf>
-Package pdftex.def Info: ../Figs///Q6/100x100.pdf  used on input line 289.
+Package pdftex.def Info: ../Figs///Q6/100x100.pdf  used on input line 294.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
-<../Figs///Q6/200x200.pdf, id=113, 602.25pt x 401.5pt>
+<../Figs///Q6/200x200.pdf, id=156, 602.25pt x 401.5pt>
 File: ../Figs///Q6/200x200.pdf Graphic file (type pdf)
 <use ../Figs///Q6/200x200.pdf>
-Package pdftex.def Info: ../Figs///Q6/200x200.pdf  used on input line 291.
+Package pdftex.def Info: ../Figs///Q6/200x200.pdf  used on input line 296.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
- [8 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q4/Q4.pdf>]
+ [9]
 Overfull \vbox (17.63866pt too high) has occurred while \output is active []
 
- [9 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/10x10.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/100x100.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/200x200.pdf>]
-<../Figs///Q7/10x10.pdf, id=168, 602.25pt x 401.5pt>
+ [10 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/10x10.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/100x100.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q6/200x200.pdf>]
+<../Figs///Q7/10x10.pdf, id=172, 602.25pt x 401.5pt>
 File: ../Figs///Q7/10x10.pdf Graphic file (type pdf)
 <use ../Figs///Q7/10x10.pdf>
-Package pdftex.def Info: ../Figs///Q7/10x10.pdf  used on input line 303.
+Package pdftex.def Info: ../Figs///Q7/10x10.pdf  used on input line 308.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
-<../Figs///Q7/100x100-10000.pdf, id=169, 602.25pt x 401.5pt>
+<../Figs///Q7/100x100-10000.pdf, id=173, 602.25pt x 401.5pt>
 File: ../Figs///Q7/100x100-10000.pdf Graphic file (type pdf)
 <use ../Figs///Q7/100x100-10000.pdf>
-Package pdftex.def Info: ../Figs///Q7/100x100-10000.pdf  used on input line 305.
+Package pdftex.def Info: ../Figs///Q7/100x100-10000.pdf  used on input line 310.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
-<../Figs///Q7/200x200-10000.pdf, id=170, 602.25pt x 401.5pt>
+<../Figs///Q7/200x200-10000.pdf, id=174, 602.25pt x 401.5pt>
 File: ../Figs///Q7/200x200-10000.pdf Graphic file (type pdf)
 <use ../Figs///Q7/200x200-10000.pdf>
-Package pdftex.def Info: ../Figs///Q7/200x200-10000.pdf  used on input line 307.
+Package pdftex.def Info: ../Figs///Q7/200x200-10000.pdf  used on input line 312.
 (pdftex.def)             Requested size: 240.89572pt x 160.59715pt.
- [10 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/10x10.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/100x100-10000.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/200x200-10000.pdf>] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux)
+ [11 <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/10x10.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/100x100-10000.pdf> <c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/../Figs///Q7/200x200-10000.pdf>] (c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 8144 strings out of 479302
- 123938 string characters out of 5871204
- 410591 words of memory out of 5000000
+ 8145 strings out of 479302
+ 123945 string characters out of 5871204
+ 409594 words of memory out of 5000000
  25187 multiletter control sequences out of 15000+600000
  407713 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,74p,457b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,8n,74p,457b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (10 pages, 1472021 bytes).
+Output written on c:/Users/Yaghoub/Documents/GitHub/ComputationalPhysics-Fall2021/ProblemSet3/TEXfiles/report.pdf (11 pages, 1473688 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
  136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
