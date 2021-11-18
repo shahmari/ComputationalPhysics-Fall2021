@@ -1,4 +1,5 @@
-using Plots, LaTeXStrings, Statistics
+using Plots, LaTeXStrings, Statistics, ProgressBars, JLD
+cd(dirname(@__FILE__))
 
 function Deposition(; len, tot_time, dep_rate, color_step)
     surface = InitialSurf(len)
@@ -62,50 +63,52 @@ function InitialSurf(len)
     return [pos1]
 end
 
-function Linear_fit(;Time, AvgList, tot_time)
-    A = [hcat(Time[1:tot_time]) reshape(ones(tot_time), tot_time, 1)]
-    b = reshape(AvgList[1:tot_time], tot_time, 1)
+function Linear_fit(;Time, AvgList, steps)
+    A = [hcat(Time) reshape(ones(steps), steps, 1)]
+    b = reshape(AvgList, steps, 1)
     line = (A \ b)
     return line
 end
 
-Parameters = Dict(:len => 300,
-                    :tot_time => 50,
-                        :dep_rate => 1000,
+Parameters = Dict(:len => 200,
+                    :tot_time => 403,
+                        :dep_rate => 100,
                             :color_step => 100)
 
+up = 5.35; low = 1; steps = 100; SelctedSpan = 56:95; SelectedSteps = length(SelctedSpan);
+Time = round.(Int,exp.(low:(up-low)/(steps-1):up))[SelctedSpan]
+RawTime = hcat(low:(up-low)/(steps-1):up)[SelctedSpan]
 
-iternum = 200
-allVal = [ [0.0 for i in 0:Parameters[:tot_time]] for j = 1:iternum]
-meanVal = [0.0 for i in 0:Parameters[:tot_time]]
-vars = [0.0 for i in 0:Parameters[:tot_time]]
-for i in 1:iternum
-    VarList = Deposition(;Parameters...)
+iternum = 1000
+allVal = [[0.0 for i ∈ 1:SelectedSteps] for j ∈ 1:iternum]
+meanVal = [0.0 for i ∈ 1:SelectedSteps]
+vars = [0.0 for i ∈ 1:SelectedSteps]
+for i ∈ ProgressBar(1:iternum)
+    VarList = Deposition(;Parameters...)[Time]
     allVal[i] = VarList
     meanVal += VarList
-    print("\r$i")
 end
 meanVal /= iternum
-for i in 1:Parameters[:tot_time] + 1
+for i ∈ 1:SelectedSteps
     vars[i] = std(hcat(allVal...)[i,:])
 end
 
-Paraline = Dict(
-                :Time => hcat(0:Parameters[:tot_time]),
-                :AvgList => meanVal,
-                :tot_time => 30)
+Paraline = Dict(:Time => log.(Time),
+                :AvgList => log.(meanVal),
+                :steps => SelectedSteps)
 Line = Linear_fit(;Paraline...)
-X = 0:Parameters[:tot_time]
+X = RawTime
 Y = X .* Line[1] .+ Line[2]
 
 plot(X,Y,c = :black,label = L"y = %$(round(Line[1],digits= 3))x + %$(round(Line[2],digits= 3))")
-scatter!(X, meanVal,
+scatter!(RawTime, log.(meanVal),
     c = :steelblue,
-    xlabel= L"Time",
-    ylabel= L"Transverse\ width",
-    title= L"Transverse\ width-Time~\ (L = %$(Parameters[:len]))",
+    xlabel= L"\mathrm{ln}(Time)",
+    ylabel= L"\mathrm{ln}({L_C}_{(t)})",
+    title= L"Log-Log\ Plot\ of\ L_C\ (L = %$(Parameters[:len]),\ %$iternum\ runs)",
     label = L"Data\ point",
-    yerror = vars,
+    ribbon = log.(vars),
+    yerror = log.(vars),
     legend = 150)
 
 savefig("../../Figs/Q3/Q3-L(t).pdf")
