@@ -112,3 +112,4 @@ scatter!(RawTime, log.(meanVal),
     legend = 150)
 
 savefig("../../Figs/Q3/Q3-L(t).pdf")
+save("../../Data/Q3/Q3-TotData.jld","Data", allVal)
