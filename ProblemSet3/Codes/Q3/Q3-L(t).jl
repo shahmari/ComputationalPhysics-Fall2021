@@ -1,5 +1,7 @@
 using Plots, LaTeXStrings, Statistics, ProgressBars, JLD
 cd(dirname(@__FILE__))
+Plots.default(titlefontsize=12, tickfontsize=10, labelfontsize=10,
+    fontfamily="Computer Modern")
 
 function Deposition(; len, tot_time, dep_rate, color_step)
     surface = InitialSurf(len)
@@ -105,7 +107,7 @@ scatter!(RawTime, log.(meanVal),
     c = :steelblue,
     xlabel= L"\mathrm{ln}(Time)",
     ylabel= L"\mathrm{ln}({L_C}_{(t)})",
-    title= L"Log-Log\ Plot\ of\ L_C\ (L = %$(Parameters[:len]),\ %$iternum\ runs)",
+    title= L"Log-Log\ Plot\ of\ L_C\ (L = %$(Parameters[:len]),\ %$iternum\ runs, %$(Time[end]*Parameters[:dep_rate])\ Particles)",
     label = L"Data\ point",
     ribbon = log.(vars),
     yerror = log.(vars),
