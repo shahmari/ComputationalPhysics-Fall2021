@@ -1,8 +1,10 @@
-using Plots, Distributions, StatsPlots, LaTeXStrings, StatsBase
+module Metropolis
 
+export Metropolis
 
+using Distributions
 
-function Metropolis(P::Function, x₀::Real = 0.0, Δ::Real = 2.9, Steps::Integer = 1000000)
+function Metropolis(; P::Function, x₀::Real = 0.0, Δ::Real = 1.0, Steps::Integer = 1000000)
     Aₙ = 0
     XList = Vector{Float64}(undef, Steps)
     x = x₀
@@ -17,13 +19,4 @@ function Metropolis(P::Function, x₀::Real = 0.0, Δ::Real = 2.9, Steps::Intege
     return XList, Aₙ / Steps
 end
 
-Data = []
-
-histogram(Metropolis(x -> ℯ^(-x^2 / 2))[1], bins = 100, normalize = true)
-plot!(Normal(0, 1))
-
-Metropolis(x -> ℯ^(-x^2 / 2))[2]
-
-Data = Metropolis(x -> ℯ^(-x^2 / 2))[1]
-
-autocor(Metropolis(x -> ℯ^(-x^2 / 2))[1])
+end
