@@ -8,7 +8,7 @@ function metropolis(; P::Function, x₀::Real = 0.0, Δ::Real = 1.0, Steps::Inte
     Aₙ = 0
     XList = Vector{Float64}(undef, Steps)
     x = x₀
-    for n = 1:Steps
+    for n ∈ 1:Steps
         XList[n] = x
         y = x + rand(Uniform(-Δ, Δ))
         if rand() < P(y) / P(x)
