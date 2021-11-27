@@ -1,5 +1,8 @@
-using Plots, Statistics, LaTeXStrings, JLD
+module MCIntegrate
 
+export SMC, IMC
+
+using Distributions, Statistics
 
 function SMC(; f::Function, X₀::Real, X₁::Real, Ŋ::Integer = 100000)
     ΔX = X₁ - X₀
@@ -20,8 +23,4 @@ function IMC(; f::Function, g::Function, ∫gₓdx::Real, Đₓ::Function, Ŋ::I
     return ∫fₓdx, Δ
 end
 
-SMCParameters = Dict(:f => x -> ℯ^(-x^2), :X₀ => 0, :X₁ => 2, :Ŋ => 10^7)
-IMCParameters = Dict(:f => x -> ℯ^(-x^2), :g => x -> ℯ^-x, :∫gₓdx => 1 - ℯ^-2, :Đₓ => x -> -log(1 - (1 - ℯ^-2) * x), :Ŋ => 10^7)
-
-SMC(; SMCParameters...)
-IMC(; IMCParameters...)
+end
