@@ -18,17 +18,38 @@
     \section*{Problem 1}
     \textbf{Basic description:}
 
-    In this problem, we're going to collect samples of the sum of a specific number of particles.
-    According to the central limit theorem, this distribution must be gaussian.
-    As we can see the results approved the theorem.
+    In this problem, we're going to find the answer to the integral of a function.
+    So we will follow the instructions introduced by the book.
+    We will deploy both methods of the Monte Carlo algorithm for solving an integration.
+    As the problem told us:
+
+    $$f_{(x)} = \int e^{-x^2} \mathop{dx} \Rightarrow I = \int_0^2 e^{-x^2} \mathop{dx} = \frac{\sqrt{\pi}}{2} \mathrm{erf}_{(2)}$$
+    
+    We solved the integration for different amounts of samples for both methods
+    and showed the benchmark result of each one in the notebook (Q1-1DInt.ipynb).
+    We also showed the distribution of answers for both methods.
+    And finally, we will show the answers, errors, and performance for each amount of samples.
 
     \textbf{The results:}
 
     \begin{figure}[!htb]
         \centering
-        \includegraphics[scale = 0.25]{/Q1/Q1-Hist}
+        \includegraphics[scale = 0.25]{/Q1/IMCVilPlot}
         \label{fig:1.1}
-        \caption{Histogram of the distribution of the samples.}
+        \includegraphics[scale = 0.25]{/Q1/SMCVilPlot}
+        \label{fig:1.2}
+        \caption{Distribution of answers for both methods.}
+    \end{figure}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.42]{/Q1/MCAnswerPlot}
+        \label{fig:1.3}
+        \includegraphics[scale = 0.42]{/Q1/MCErrorPlot}
+        \label{fig:1.4}
+        \includegraphics[scale = 0.42]{/Q1/MCPerformPlot}
+        \label{fig:1.5}
+        \caption{Plot of answers, errors, and performance for both methods.}
     \end{figure}
 
     \pagebreak
@@ -36,51 +57,76 @@
     \section*{Problem 2}
     \textbf{Basic description:}
 
-    In this problem, we're going to convert a uniform distribution to a gaussian.
-    So we continue the book solution. We have x1 and x2 samples.
-    To find y1 and y2 (that are from the gaussian distribution) we continue this solution:
+    In this problem, we want to find the center of mass of
+    a sphere whit specific mass distribution.
+    So we have to find the answer to a 2D integration.
+    As we know:
 
-    \begin{gather*}
-        f_{(x)} dx=g_{(y)} dy \Rightarrow \int f_{(x)} dx = \int g_{(y)} dy\\
-        \Rightarrow x = \int g_{(y)} dy = G_{(y)}\\
-        \Rightarrow x = {G^{-1}}_{(x)}\\
-        g(y) = \frac{e^{-\frac{y^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}
-    \end{gather*}
+    $$R_{CoM} = \frac{I}{M} \Rightarrow R_{CoM} = \frac{\int_{Sphere} z \rho dV}{\int_{Sphere} \rho dV},\ \rho = \rho_0 (3 + \frac{r}{R} \cos{\theta}) \Rightarrow$$
+    $$ R_{CoM} = \frac{\int_0^R\int_0^\pi (3+\frac{r}{R}\cos{\theta})r^3\sin{\theta}\cos{\theta} d\theta dr}{\int_0^R\int_0^\pi (3+\frac{r}{R}\cos{\theta})r^2\sin{\theta} d\theta dr}$$
 
-    We know G(y) can't be expressed as we want,
-    so we use the box-muller solution to get what we want:
-
-    \begin{gather*}
-        g_{(y_1,y_2)dy_1 dy_2 = g_{(y_1)}g_{(y_1)}} = \frac{e^{-\frac{{y_1}^2 + {y_2}^2}{2\sigma^2}}}{2\pi\sigma^2} dy_1 dy_2
-    \end{gather*}
-
-    We transform into polar coordinates:
-
-    \begin{gather*}
-        y_1 = \rho \sin_{\theta}, \ y_2 = \rho \cos_{\theta}\\
-        \Rightarrow g_{(y_1,y_2)}dy_1 dy_2 = g_{(\rho,\theta)}\rho \theta = \frac{e^{-\frac{\rho^2}{2\sigma^2}}}{2\pi\sigma^2}\rho d{\rho}d{\theta}\\
-        \Rightarrow {g_1}_{(\rho)} = \frac{e^{-\frac{\rho^2}{2\sigma^2}}}{\sigma^2}\rho d{\rho}d{\theta},\ {g_2}_{(\theta)} = \frac{1}{2\pi} \\
-        \Rightarrow {G_1}_{(\rho)} = 1 - e^{-\frac{\rho^2}{2\sigma^2}} ,\ {g_2}_{(\theta)} = \frac{\theta}{2\pi}\\
-        \Rightarrow \ \rho = \sigma \sqrt{2ln(\frac{1}{1-x_1})},\ \theta = 2\pi x_2
-    \end{gather*}
-
-    So we use the following formula to transform uniform distribution to gaussian distribution.
-
-    \pagebreak
-
-    I also built a function to create a uniform distribution. So, initially I call my uniform distribution creator function and transform the distribution to the Gaussian distribution.
+    That has the exact answer of $R_{CoM} = \frac{R}{15}$.
+    We drew the distribution of a bunch of answers.
+    Also, we calculated the values of errors.
+    The final answer is $R_{CoM} = 0.0665806190158467$.
+    All steps and values are available in the notebook.
 
     \textbf{The results:}
 
     \begin{figure}[!htb]
         \centering
-        \includegraphics[scale = 0.5]{/Q2/Q2-Hist}
+        \includegraphics[scale = 0.25]{/Q2/IHistPlot}
         \label{fig:2.1}
-        \caption{Histogram of the distribution of the samples.}
+        \includegraphics[scale = 0.25]{/Q2/MHistPlot}
+        \label{fig:2.2}
+        \caption{Distribution of answers of integration of I and M.}
     \end{figure}
 
+    \pagebreak
+
+    \section*{Problem 3}
+    \textbf{Basic description:}
+
+    In this problem, we want to create the Normal distribution
+    by moving samples of the Uniform distribution in a span
+    with various chances of movement and deploying the Metropolis algorithm.
+    As we know the best distribution comes out with $a_r \approx 0.5$.
+    So we draw a distribution with $a_r \approx 0.5$.
+    Then, we will show the relation between $\Delta$ and $a_r$.
+    And finally, we will show the Auto Correlation and Correlation length.
+    The Correlation length will come out by finding the exponent of the Auto Correlation.
+
+    \textbf{The results:}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.4]{/Q3/NormalHist}
+        \label{fig:3.1}
+        \caption{Metropolis Normal Distribution with $a_r \approx 0.5$.}
+    \end{figure}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.4]{/Q3/AcceptanceRatio}
+        \label{fig:3.2}
+        \caption{Acceptance Ratio plot.}
+    \end{figure}
+
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale = 0.3]{/Q3/Autocorrelation1}
+        \label{fig:3.3}
+        \includegraphics[scale = 0.3]{/Q3/Autocorrelation2}
+        \label{fig:3.4}
+        \includegraphics[scale = 0.3]{/Q3/CorrelationLength}
+        \label{fig:3.5}
+        \caption{Auto correlation and Correlation Length Plot.}
+    \end{figure}
+
+    \pagebreak
+
     \centering
-    \textbf{The whole data I gathered is in \href{https://github.com/shahmari/ComputationalPhysics-Fall2021/tree/main/ProblemSet6/Data}{this link}}
+    \textbf{The whole data I gathered is in \href{https://github.com/shahmari/ComputationalPhysics-Fall2021/tree/main/ProblemSet7/Data}{this link}}
 
     Thanks for watching :)
 \end{document}
