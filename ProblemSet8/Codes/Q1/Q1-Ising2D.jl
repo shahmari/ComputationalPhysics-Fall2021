@@ -25,7 +25,7 @@ function FindEnergy(Network::Matrix{Int8}, dim::Integer)
             E += -sum(Network[i, j] * Network[CartesianIndex.(Tuple.(Neighbors))]) / 2
         end
     end
-    return E
+    return E / dim ^2
 end
 
 function FindMagnetization(Network::Matrix{Int8})
@@ -80,11 +80,11 @@ function MonteCarloStep(StepSize::Integer, Network::Matrix{Int8}, dim::Integer, 
         ΔE = 2 * Network[i, j] * sum(Network[CartesianIndex.(Tuple.(Neighbors))])
         if ΔE <= 0
             Network[i, j] *= -1
-            ΔEₙₑₜ += ΔE
+            ΔEₙₑₜ += ΔE / dim^2
             ΔMₙₑₜ += 2 * Network[i, j] / dim^2
         elseif rand() < exp(-ΔE * β)
             Network[i, j] *= -1
-            ΔEₙₑₜ += ΔE
+            ΔEₙₑₜ += ΔE / dim^2
             ΔMₙₑₜ += 2 * Network[i, j] / dim^2
         end
     end
@@ -92,19 +92,19 @@ function MonteCarloStep(StepSize::Integer, Network::Matrix{Int8}, dim::Integer, 
 end
 
 
-function IsingModel(β::Real; dim::Integer = 10, MCLSize::Integer = 1000000, NLSize::Integer = 100, SkipNum::Integer = 50000, ProgBar::Bool = true)
-    # if ProgBar == true
-    #     Prog = Progress(MCLSize)
-    # end
+function IsingModel(β::Real; dim::Integer = 20, MCLSize::Integer = 1000000, NLSize::Integer = 100, SkipNum::Integer = 50000, ProgBar::Bool = false)
+    if ProgBar == true
+        Prog = Progress(MCLSize)
+    end
     Network = InitialCondition(dim)
     E = FindEnergy(Network, dim)
     M = FindMagnetization(Network)
     EₙₑₜList = Array{Float64,1}(undef, MCLSize)
     MₙₑₜList = Array{Float64,1}(undef, MCLSize)
     for MCL ∈ 1:MCLSize
-        # if ProgBar == true
-        #     next!(Prog)
-        # end
+        if ProgBar == true
+            next!(Prog)
+        end
         ΔEₙₑₜ, ΔMₙₑₜ = MonteCarloStep(NLSize, Network, dim, β)
         E += ΔEₙₑₜ
         M += ΔMₙₑₜ
