@@ -1,7 +1,8 @@
-using Statistics, ProgressBars, Plots, ProgressMeter
-# module Ising2D
+module Ising2D
 
-# export 
+export NetworkDynamic, IsingModel
+
+using Statistics, ProgressMeter
 
 # function FixBounds(dim::Integer, indices::Vector{Vector{Int}})
 #     for i ∈ 1:4
@@ -115,19 +116,4 @@ function IsingModel(β::Real; dim::Integer = 10, MCLSize::Integer = 1000000, NLS
     return Ē, M̄, Cᵥ, 𝑋
 end
 
-data = zeros(4, 20)
-
-for i in ProgressBar(1:20)
-    data[:, i] = [IsingModel(0.5;)...]
 end
-
-plot(data[2, :])
-
-Networks = NetworkDynamic(0.6;)
-@gif for net ∈ Networks
-    heatmap(net)
-end
-
-
-Network = InitialCondition(100)
-mean(Network)
