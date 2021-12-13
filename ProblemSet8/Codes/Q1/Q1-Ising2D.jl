@@ -92,7 +92,7 @@ function MonteCarloStep(StepSize::Integer, Network::Matrix{Int8}, dim::Integer, 
 end
 
 
-function IsingModel(β::Real; dim::Integer = 20, MCLSize::Integer = 1000000, NLSize::Integer = 120, SkipNum::Integer = 500000, ProgBar::Bool = false)
+function IsingModel(β::Real; dim::Integer = 20, MCLSize::Integer = 1000000, NLSize::Integer = 10, SkipNum::Integer = 500000, ProgBar::Bool = false)
     if ProgBar == true
         Prog = Progress(MCLSize)
     end
