@@ -78,11 +78,7 @@ function MonteCarloStep(StepSize::Integer, Network::Matrix{Int8}, dim::Integer, 
             [i, (-2 + j + dim) % dim + 1]
         ]
         ΔE = 2 * Network[i, j] * sum(Network[CartesianIndex.(Tuple.(Neighbors))])
-        if ΔE <= 0
-            Network[i, j] *= -1
-            ΔEₙₑₜ += ΔE / dim^2
-            ΔMₙₑₜ += 2 * Network[i, j] / dim^2
-        elseif rand() < exp(-ΔE * β)
+        if ΔE <= 0 || rand() < exp(-ΔE * β)
             Network[i, j] *= -1
             ΔEₙₑₜ += ΔE / dim^2
             ΔMₙₑₜ += 2 * Network[i, j] / dim^2
