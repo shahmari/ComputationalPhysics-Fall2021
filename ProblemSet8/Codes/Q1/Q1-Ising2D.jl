@@ -88,7 +88,7 @@ function MonteCarloStep(StepSize::Integer, Network::Matrix{Int8}, dim::Integer, 
 end
 
 
-function IsingModel(β::Real; dim::Integer = 20, MCLSize::Integer = 1000000, NLSize::Integer = 10, SkipNum::Integer = 500000, ProgBar::Bool = false)
+function IsingModel(β::Real; dim::Integer = 15, MCLSize::Integer = 1000, NLSize::Integer = 1000, SkipNum::Integer = 200, ProgBar::Bool = true)
     if ProgBar == true
         Prog = Progress(MCLSize)
     end
@@ -108,8 +108,8 @@ function IsingModel(β::Real; dim::Integer = 20, MCLSize::Integer = 1000000, NLS
         MₙₑₜList[MCL] = abs(M)
     end
     Ē, M̄ = mean(EₙₑₜList[SkipNum:end]), mean(MₙₑₜList[SkipNum:end])
-    Cᵥ, 𝑋 = β^2 * var(EₙₑₜList[SkipNum:end]), β * var(MₙₑₜList[SkipNum:end])
-    return Ē, M̄, Cᵥ, 𝑋
+    Cᵥ, Χ = β^2 * var(EₙₑₜList[SkipNum:end]) * dim^2 , β * var(MₙₑₜList[SkipNum:end])
+    return Ē, M̄, Cᵥ, Χ
 end
 
 end
