@@ -108,8 +108,8 @@ function IsingModel(β::Real; dim::Integer = 15, MCLSize::Integer = 1000, NLSize
         MₙₑₜList[MCL] = abs(M)
     end
     Ē, M̄ = mean(EₙₑₜList[SkipNum:end]), mean(MₙₑₜList[SkipNum:end])
-    Cᵥ, Χ = β^2 * var(EₙₑₜList[SkipNum:end]) * dim^2 , β * var(MₙₑₜList[SkipNum:end])
-    return Ē, M̄, Cᵥ, Χ
+    Cᵥ, χ = β^2 * var(EₙₑₜList[SkipNum:end]) * dim^2, β * var(MₙₑₜList[SkipNum:end])
+    return Ē, M̄, Cᵥ, χ
 end
 
 end
