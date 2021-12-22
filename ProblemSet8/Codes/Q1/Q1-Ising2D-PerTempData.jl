@@ -6,9 +6,9 @@ cd(dirname(@__FILE__))
 
 datapath = "../../Data/Q1/"
 
-βList = [hcat(0.0:0.02:0.25); hcat(0.26:0.0075:0.55); hcat(0.56:0.02:1.0)]
+βList = hcat(0.0:0.005:1.0)
 Llist = [5, 10, 15]
-runnum = 100
+runnum = 50
 Data = zeros(4, length(βList), runnum, length(Llist))
 
 PRG = Progress(length(βList) * runnum)
@@ -19,13 +19,13 @@ for n ∈ 1:runnum
             β = βList[i]
             Parameters = Dict(
                 :dim => L,
-                :MCLSize => 1500,
+                :MCLSize => 1000,
                 :NLSize => 1000,
-                :SkipNum => 500,
+                :SkipNum => 200,
                 :ProgBar => false)
             Data[:, i, n, l] = [Ising2D.IsingModel(β; Parameters...)...]
         end
         next!(PRG)
     end
 end
-save(datapath * "PTData.jld", "Data", Data, "βList", βList)
+save(datapath * "PTData.jld", "Data", Data, "βList", βList, "Llist", Llist)
