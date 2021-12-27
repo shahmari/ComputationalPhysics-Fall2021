@@ -14,10 +14,3 @@ function EulerDES(; ḟ::Function, y₀::Real, x₀::Float64, x₁::Float64, h::
 end
 
 end
-
-
-ts = collect(range(0.0, 5.0, step = 0.01))
-
-
-
-Vector{Float64}(undef, length(hcat(0.0:0.01:5.0)))
