@@ -73,4 +73,19 @@ function EulerMidPiontDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::F
     return tcoll, xcoll, vcoll
 end
 
+function VerletDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+    tcoll = collect(t₀:h:t₁)
+    xcoll = Float64[x₀, x₀+v₀*h+ẍ(t₀, x₀)*(h^2)/2]
+    vcoll = Float64[v₀, v₀+ẍ(t₀, x₀)*h]
+
+    for i ∈ 3:length(tcoll)
+        xᵢ = 2 * xcoll[i-1] - xcoll[i-2] + ẍ(tcoll[i-1], xcoll[i-1]) * (h^2)
+        vᵢ = (xcoll[i] - xcoll[i-1]) / h
+        push!(xcoll, xᵢ)
+        push!(vcoll, vᵢ)
+    end
+
+    return tcoll, xcoll, vcoll
+end
+
 end
