@@ -1,6 +1,6 @@
 module DiffEqsSolver
 
-export EulerDES, EulerYaghoubDES, EulerCromerDES, RK2DES, EulerMidPiontDES
+export EulerDES, EulerYaghoubDES, EulerCromerDES, RK2DES, EulerMidPiontDES, VerletDES, VelVerDES
 
 function EulerDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
     tcoll = collect(t₀:h:t₁)
@@ -17,7 +17,7 @@ function EulerYaghoubDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, 
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
     x = x₀
-    ẋval = ẋ(t, x₀)
+    ẋval = ẋ(t₀, x₀)
     for t ∈ tcoll[2:end]
         x += h * ẋval
         ẋval = ẋ(t, x)
@@ -34,6 +34,21 @@ function RK2DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Flo
         K₁ = ẋ(t, x) * h
         K₂ = h * ẋ(t + h / 2, x + (K₁ * h) / 2)
         x += K₂
+        push!(xcoll, x)
+    end
+    return tcoll, xcoll
+end
+
+function RK4DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+    tcoll = collect(t₀:h:t₁)
+    xcoll = [x₀]
+    x = x₀
+    for t ∈ tcoll[2:end]
+        K₁ = ẋ(t, x)
+        K₂ = ẋ(t + h / 2, x .+ h / 2 * K₁)
+        K₃ = ẋ(t + h / 2, x .+ h / 2 * K₂)
+        K₄ = ẋ(t + h, x .+ h * K₃)
+        x += (K₁ + 2 * K₂ + 2 * K₃ + K₄) * h / 6
         push!(xcoll, x)
     end
     return tcoll, xcoll
@@ -65,7 +80,7 @@ function EulerMidPiontDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::F
     for t ∈ tcoll[2:end]
         v += step * ẍ(t, x)
         x += step * v
-    
+
         push!(xcoll, x)
         push!(vcoll, v)
     end
