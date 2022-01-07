@@ -88,4 +88,23 @@ function VerletDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64,
     return tcoll, xcoll, vcoll
 end
 
+function VelVerDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+    tcoll = collect(t₀:h:t₁)
+    xcoll = Float64[x₀]
+    vcoll = Float64[v₀]
+    x = x₀
+    v = v₀
+
+    for t ∈ tcoll[2:end]
+        ẍₙ = ẍ(t, x)
+        x += v * h + ẍₙ * (h^2) / 2
+        ẍₙ₊₁ = ẍ(t + h, x)
+        v += (ẍₙ + ẍₙ₊₁) * h / 2
+        push!(xcoll, x)
+        push!(vcoll, v)
+    end
+
+    return tcoll, xcoll, vcoll
+end
+
 end
