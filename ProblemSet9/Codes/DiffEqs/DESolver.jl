@@ -13,6 +13,16 @@ function EulerDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::F
     return tcoll, xcoll
 end
 
+function UnstableDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+    tcoll = collect(t₀:h:t₁)
+    xcoll = [x₀, x₀ + h * ẋ(t₀, x₀)]
+    for t ∈ tcoll[3:end]
+        xₙ₊₁ = 2 * h * ẋ(t, xcoll[end]) + xcoll[end-1]
+        push!(xcoll, xₙ₊₁)
+    end
+    return tcoll, xcoll
+end
+
 function EulerYaghoubDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
