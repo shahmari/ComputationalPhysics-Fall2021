@@ -2,7 +2,7 @@ module DiffEqsSolver
 
 export EulerDES, EulerYaghoubDES, EulerCromerDES, RK2DES, EulerMidPiontDES, VerletDES, VelVerDES
 
-function EulerDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+function EulerDES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
     x = x₀
@@ -13,7 +13,7 @@ function EulerDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::F
     return tcoll, xcoll
 end
 
-function UnstableDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+function UnstableDES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀, x₀ + h * ẋ(t₀, x₀)]
     for t ∈ tcoll[3:end]
@@ -23,7 +23,7 @@ function UnstableDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁
     return tcoll, xcoll
 end
 
-function EulerYaghoubDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+function EulerYaghoubDES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
     x = x₀
@@ -36,7 +36,7 @@ function EulerYaghoubDES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, 
     return tcoll, xcoll
 end
 
-function RK2DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+function RK2DES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
     x = x₀
@@ -49,7 +49,7 @@ function RK2DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Flo
     return tcoll, xcoll
 end
 
-function RK4DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Float64, h::Float64)
+function RK4DES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
     xcoll = [x₀]
     x = x₀
@@ -64,10 +64,10 @@ function RK4DES(; ẋ::Function, x₀::Vector{Float64}, t₀::Float64, t₁::Flo
     return tcoll, xcoll
 end
 
-function EulerCromerDES(; ẍ::Function, x₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+function EulerCromerDES(; ẍ::Function, x₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = Float64[x₀]
-    vcoll = Float64[v₀]
+    xcoll = T[x₀]
+    vcoll = T[v₀]
     x = x₀
     v = v₀
     for t ∈ tcoll[2:end]
@@ -80,10 +80,10 @@ function EulerCromerDES(; ẍ::Function, x₀::Float64, t₀::Float64, t₁::Flo
     return tcoll, xcoll, vcoll
 end
 
-function EulerMidPiontDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+function EulerMidPiontDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = Float64[x₀]
-    vcoll = Float64[v₀-(ẍ(t₀, initx)*h/2)]
+    xcoll = T[x₀]
+    vcoll = T[v₀-(ẍ(t₀, initx)*h/2)]
     x = x₀
     v = v₀
 
@@ -98,10 +98,10 @@ function EulerMidPiontDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::F
     return tcoll, xcoll, vcoll
 end
 
-function VerletDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+function VerletDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = Float64[x₀, x₀+v₀*h+ẍ(t₀, x₀)*(h^2)/2]
-    vcoll = Float64[v₀, v₀+ẍ(t₀, x₀)*h]
+    xcoll = T[x₀, x₀+v₀*h+ẍ(t₀, x₀)*(h^2)/2]
+    vcoll = T[v₀, v₀+ẍ(t₀, x₀)*h]
 
     for i ∈ 3:length(tcoll)
         xᵢ = 2 * xcoll[i-1] - xcoll[i-2] + ẍ(tcoll[i-1], xcoll[i-1]) * (h^2)
@@ -113,10 +113,10 @@ function VerletDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64,
     return tcoll, xcoll, vcoll
 end
 
-function VelVerDES(; ẍ::Function, x₀::Float64, v₀::Float64, t₀::Float64, t₁::Float64, h::Float64)
+function VelVerDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = Float64[x₀]
-    vcoll = Float64[v₀]
+    xcoll = T[x₀]
+    vcoll = T[v₀]
     x = x₀
     v = v₀
 
