@@ -1,6 +1,6 @@
 module DiffEqsSolver
 
-export EulerDES, EulerYaghoubDES, EulerCromerDES, RK2DES, EulerMidPiontDES, VerletDES, VelVerDES
+export EulerDES, RK2DES, RK4DES, EulerCromerDES, EulerMidPiontDES, VerletDES, VelVerDES
 
 function EulerDES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
@@ -64,72 +64,72 @@ function RK4DES(; ẋ::Function, x₀::Vector{T}, t₀::T, t₁::T, h::T) where 
     return tcoll, xcoll
 end
 
-function EulerCromerDES(; ẍ::Function, x₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
+function EulerCromerDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = T[x₀]
-    vcoll = T[v₀]
+    xcoll = [x₀]
+    ẋcoll = [ẋ₀]
     x = x₀
-    v = v₀
+    ẋ = ẋ₀
     for t ∈ tcoll[2:end]
-        v += h * ẍ(t, x)
-        x += h * v
+        ẋ += h * ẍ(t, x, ẋ)
+        x += h * ẋ
         push!(xcoll, x)
-        push!(vcoll, v)
+        push!(ẋcoll, ẋ)
     end
 
-    return tcoll, xcoll, vcoll
+    return tcoll, xcoll, ẋcoll
 end
 
-function EulerMidPiontDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
+function EulerMidPiontDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = T[x₀]
-    vcoll = T[v₀-(ẍ(t₀, initx)*h/2)]
+    xcoll = [x₀]
+    ẋcoll = [ẋ₀ - (ẍ(t₀, x₀, ẋ₀) * h / 2)]
     x = x₀
-    v = v₀
+    ẋ = ẋ₀
 
     for t ∈ tcoll[2:end]
-        v += step * ẍ(t, x)
-        x += step * v
+        ẋ += step * ẍ(t, x, ẋ)
+        x += step * ẋ
 
         push!(xcoll, x)
-        push!(vcoll, v)
+        push!(ẋcoll, ẋ)
     end
 
-    return tcoll, xcoll, vcoll
+    return tcoll, xcoll, ẋcoll
 end
 
-function VerletDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
+function VerletDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = T[x₀, x₀+v₀*h+ẍ(t₀, x₀)*(h^2)/2]
-    vcoll = T[v₀, v₀+ẍ(t₀, x₀)*h]
+    xcoll = [x₀, x₀ + ẋ₀ * h + ẍ(t₀, x₀, ẋ₀) * (h^2) / 2]
+    ẋcoll = [ẋ₀, ẋ₀ + ẍ(t₀, x₀, ẋ₀) * h]
 
     for i ∈ 3:length(tcoll)
-        xᵢ = 2 * xcoll[i-1] - xcoll[i-2] + ẍ(tcoll[i-1], xcoll[i-1]) * (h^2)
-        vᵢ = (xcoll[i] - xcoll[i-1]) / h
+        xᵢ = 2 * xcoll[i-1] - xcoll[i-2] + ẍ(tcoll[i-1], xcoll[i-1], ẋcoll[i-1]) * (h^2)
+        ẋᵢ = (xcoll[i] - xcoll[i-1]) / h
         push!(xcoll, xᵢ)
-        push!(vcoll, vᵢ)
+        push!(ẋcoll, ẋᵢ)
     end
 
-    return tcoll, xcoll, vcoll
+    return tcoll, xcoll, ẋcoll
 end
 
-function VelVerDES(; ẍ::Function, x₀::T, v₀::T, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
+function VelVerDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t₀::T, t₁::T, h::T) where {T<:AbstractFloat}
     tcoll = collect(t₀:h:t₁)
-    xcoll = T[x₀]
-    vcoll = T[v₀]
+    xcoll = [x₀]
+    ẋcoll = [ẋ₀]
     x = x₀
-    v = v₀
+    ẋ = ẋ₀
 
     for t ∈ tcoll[2:end]
-        ẍₙ = ẍ(t, x)
-        x += v * h + ẍₙ * (h^2) / 2
-        ẍₙ₊₁ = ẍ(t + h, x)
-        v += (ẍₙ + ẍₙ₊₁) * h / 2
+        ẍₙ = ẍ(t, x, ẋ)
+        x += ẋ * h + ẍₙ * (h^2) / 2
+        ẍₙ₊₁ = ẍ(t + h, x, ẋ)
+        ẋ += (ẍₙ + ẍₙ₊₁) * h / 2
         push!(xcoll, x)
-        push!(vcoll, v)
+        push!(ẋcoll, ẋ)
     end
 
-    return tcoll, xcoll, vcoll
+    return tcoll, xcoll, ẋcoll
 end
 
 end
