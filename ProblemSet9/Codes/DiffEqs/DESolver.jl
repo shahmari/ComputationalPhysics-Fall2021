@@ -85,7 +85,7 @@ function EulerMidPiontDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t
     xcoll = [x₀]
     ẋcoll = [ẋ₀ - (ẍ(t₀, x₀, ẋ₀) * h / 2)]
     x = x₀
-    ẋ = ẋ₀
+    ẋ = ẋ₀ - (ẍ(t₀, x₀, ẋ₀) * h / 2)
 
     for t ∈ tcoll[2:end]
         ẋ += h * ẍ(t, x, ẋ)
@@ -105,8 +105,8 @@ function VerletDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t₀::T,
 
     for i ∈ 3:length(tcoll)
         xᵢ = 2 * xcoll[i-1] - xcoll[i-2] + ẍ(tcoll[i-1], xcoll[i-1], ẋcoll[i-1]) * (h^2)
-        ẋᵢ = (xcoll[i] - xcoll[i-1]) / h
         push!(xcoll, xᵢ)
+        ẋᵢ = (xcoll[i] - xcoll[i-1]) / h
         push!(ẋcoll, ẋᵢ)
     end
 
