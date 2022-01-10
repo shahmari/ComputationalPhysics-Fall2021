@@ -88,8 +88,8 @@ function EulerMidPiontDES(; ẍ::Function, ẋ₀::Vector{T}, x₀::Vector{T}, t
     ẋ = ẋ₀
 
     for t ∈ tcoll[2:end]
-        ẋ += step * ẍ(t, x, ẋ)
-        x += step * ẋ
+        ẋ += h * ẍ(t, x, ẋ)
+        x += h * ẋ
 
         push!(xcoll, x)
         push!(ẋcoll, ẋ)
