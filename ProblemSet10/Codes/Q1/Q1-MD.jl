@@ -20,7 +20,7 @@ mutable struct MDSystem{DT<:AbstractFloat}
 
         for i ∈ 1:(N-1)
             for j ∈ i+1:N
-                Δr = abs(r[:, i] - r[:, j])
+                Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
                 if Δr > 2^(1 / 6)
                     Σrterm += ((Δr)^-12) - ((Δr)^-6)
                 end
@@ -31,8 +31,23 @@ mutable struct MDSystem{DT<:AbstractFloat}
 
         K = sum(v .^ 2) / 2
 
-        T = K / N
-        return new{DT}(l, U, K, T, P)
+        T = T₀
+
+        Σv² = sum(v .^ 2)
+        Σrterm = 0.0
+
+        for i ∈ 1:(N-1)
+            for j ∈ i+1:N
+                Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
+                if Δr < 2^(1 / 6)
+                    Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
+                end
+            end
+        end
+
+        P = ((48 * Σrterm) + Σv²) / (2 * l * l)
+
+        return new{DT}(l, U, K, T, P, N, r, v)
     end
 end
 
@@ -41,7 +56,7 @@ function update_potential!(sys::MDSystem)
 
     for i ∈ 1:(sys.N-1)
         for j ∈ i+1:sys.N
-            Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
+            Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
             if Δr < 2^(1 / 6)
                 Σrterm += ((Δr)^-12) - ((Δr)^-6)
             end
@@ -67,7 +82,7 @@ function update_pressure!(sys::MDSystem)
 
     for i ∈ 1:(sys.N-1)
         for j ∈ i+1:sys.N
-            Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
+            Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
             if Δr < 2^(1 / 6)
                 Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
             end
@@ -76,3 +91,8 @@ function update_pressure!(sys::MDSystem)
     sys.P = ((48 * Σrterm) + Σv²) / (2 * sys.l * sys.l)
 end
 
+MDSys = MDSystem(100, 200.0, 1.0)
+
+MDSys.P
+
+update_pressure!(MDSys)
