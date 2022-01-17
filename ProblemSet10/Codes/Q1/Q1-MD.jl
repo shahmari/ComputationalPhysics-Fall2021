@@ -8,6 +8,7 @@ mutable struct MDSystem{DT<:AbstractFloat}
     T::DT
     P::DT
     N::Integer
+    f::Matrix{DT}
     r::Matrix{DT}
     v::Matrix{DT}
     function MDSystem(N::Integer, T₀::DT, l::DT) where {DT<:AbstractFloat}
@@ -15,40 +16,26 @@ mutable struct MDSystem{DT<:AbstractFloat}
         v = rand(DT, 2, N) .- 0.5
         v .-= mean(v, dims = 2)
         v *= √(T₀ ÷ mean(v .^ 2))
-
-        Σrterm = 0.0
-
-        for i ∈ 1:(N-1)
-            for j ∈ i+1:N
-                Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
-                if Δr > 2^(1 / 6)
-                    Σrterm += ((Δr)^-12) - ((Δr)^-6)
-                end
-            end
-        end
-
-        U = 4 * Σrterm
-
-        K = sum(v .^ 2) / 2
-
-        T = T₀
-
-        Σv² = sum(v .^ 2)
-        Σrterm = 0.0
-
-        for i ∈ 1:(N-1)
-            for j ∈ i+1:N
-                Δr = √sum(abs.(r[:, i] - r[:, j]) .^ 2)
-                if Δr < 2^(1 / 6)
-                    Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
-                end
-            end
-        end
-
-        P = ((48 * Σrterm) + Σv²) / (2 * l * l)
-
-        return new{DT}(l, U, K, T, P, N, r, v)
+        f = Matrix{DT}(undef, 2, N)
+        return new{DT}(DT(NaN), DT(NaN), DT(NaN), DT(NaN), DT(NaN), N, f, r, v)
     end
+end
+
+function update_force!(sys::MDSystem)
+    for i ∈ 1:sys.N
+        fᵢ = sys.DT[0.0, 0.0]
+        for j ∈ setdiff(1:sys.N, i)
+            Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
+            fᵢ += 48 * (((Δr)^-14) - 0.5 * ((Δr)^-8)) * abs.(sys.r[:, i] - sys.r[:, j])
+        end
+        sys.f[:, i] = fᵢ
+    end
+end
+
+function update_phase!(sys::MDSystem)
+    for i ∈ 1:sys.N
+        for j ∈ setdiff(1:sys.N, i)
+
 end
 
 function update_potential!(sys::MDSystem)
@@ -96,3 +83,5 @@ MDSys = MDSystem(100, 200.0, 1.0)
 MDSys.P
 
 update_pressure!(MDSys)
+
+
