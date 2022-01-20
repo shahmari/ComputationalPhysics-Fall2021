@@ -22,6 +22,17 @@ mutable struct MDSystem{DT<:AbstractFloat}
     end
 end
 
+function init(; N::Integer, T₀::DT, l::DT, h)
+    sys = MDSystem(N, T₀, l, h)
+    update_force!(sys)
+    update_phase!(sys)
+    update_potential!(sys)
+    update_kinetic!(sys)
+    update_temperature!(sys)
+    update_pressure!(sys)
+    return sys
+end
+
 function update_force!(sys::MDSystem)
     for i ∈ 1:sys.N
         fᵢ = sys.DT[0.0, 0.0]
@@ -33,7 +44,8 @@ function update_force!(sys::MDSystem)
     end
 end
 
-function get_force(sys::MDSystem, i)
+
+function get_force(sys::MDSystem, i::Integer)
     fᵢ = sys.DT[0.0, 0.0]
     for j ∈ setdiff(1:sys.N, i)
         Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
@@ -91,11 +103,5 @@ function update_pressure!(sys::MDSystem)
     end
     sys.P = ((48 * Σrterm) + Σv²) / (2 * sys.l * sys.l)
 end
-
-MDSys = MDSystem(100, 200.0, 1.0)
-
-MDSys.P
-
-update_pressure!(MDSys)
 
 
