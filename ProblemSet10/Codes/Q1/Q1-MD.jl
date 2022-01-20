@@ -1,5 +1,6 @@
 
 using Statistics: mean
+using Plots
 
 mutable struct MDSystem{DT<:AbstractFloat}
     h::DT
@@ -31,6 +32,14 @@ function init(; N::Integer, T₀::DT, l::DT, h::DT) where {DT<:AbstractFloat}
     update_temperature!(sys)
     update_pressure!(sys)
     return sys
+end
+
+function simulate!(sys::MDSystem)
+    update_phase!(sys)
+    update_potential!(sys)
+    update_kinetic!(sys)
+    update_temperature!(sys)
+    update_pressure!(sys)
 end
 
 function update_forces!(sys::MDSystem)
@@ -67,6 +76,9 @@ function update_phase!(sys::MDSystem)
         sys.v[:, i] += sys.h * (f₁ + f₂) / 2
     end
 end
+
+function check_boundary!(sys::MDSystem)
+    sys.r = (sys.r .+ sys.l) .% sys.l
 
 function update_potential!(sys::MDSystem)
     Σrterm = 0.0
@@ -110,5 +122,16 @@ end
 
 
 
-Parameters = Dict(:N => 100, :T₀ => 200.0, :l => 1.0, :h => 0.01)
-init(; Parameters...)
+Parameters = Dict(:N => 30, :T₀ => 200.0, :l => 1.0, :h => 0.01)
+sys = init(; Parameters...)
+[Tuple(sys.r[:, n]) for n ∈ 1:sys.N]
+scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N])
+
+
+
+
+sys.r
+
+
+@gif for i ∈ 1:50
+    sca
