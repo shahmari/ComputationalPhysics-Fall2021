@@ -1,6 +1,8 @@
+module MDSim
+
+export init, simulate!
 
 using Statistics: mean
-using Plots
 
 mutable struct MDSystem{DT<:AbstractFloat}
     l::DT
@@ -166,17 +168,4 @@ function update_pressure!(sys::MDSystem)
     sys.P = ((48 * Σrterm) + Σv²) / (2 * sys.l * sys.l)
 end
 
-
-
-Parameters = Dict(:N => 100, :T₀ => 1.0, :h => 0.05, :l => 50.0)
-sys = init(; Parameters...)
-
-using ProgressBars
-
-@gif for i ∈ ProgressBar(1:500)
-    simulate!(sys)
-    scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (1.0, 49.0), ylims = (1.0, 49.0))
 end
-
-
-scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (-1, 30.0), ylims = (-1, 30.0))
