@@ -49,10 +49,10 @@ function alignleft!(sys::MDSystem)    #Thanks to my dearest friend for his beaut
     xcount = ceil(Integer, (2 * sys.N)^(1 / 2) / 2)
     ycount = 2 * xcount
 
-    xs = collect(range(0.01 * sys.l / 2, 0.99 * sys.l / 2, length = xcount))
+    xs = collect(range(0.1 * sys.l / 2, 0.9 * sys.l / 2, length = xcount))
     sys.r[1, :] .= repeat(xs, outer = ycount)[1:sys.N]
 
-    ys = collect(range(0.01 * sys.l, 0.99 * sys.l, length = ycount))
+    ys = collect(range(0.1 * sys.l, 0.9 * sys.l, length = ycount))
     sys.r[2, :] .= repeat(ys, inner = xcount, outer = 1)[1:sys.N]
 end
 
@@ -62,14 +62,14 @@ function update_forces!(sys::MDSystem)
         for j ∈ setdiff(1:sys.N, i)
             rmirror = sys.r[:, j]
             if sys.r[1, i] - rmirror[1] > sys.l / 2
-                rmirror[1] -= sys.l
-            elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
                 rmirror[1] += sys.l
+            elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
+                rmirror[1] -= sys.l
             end
             if sys.r[2, i] - rmirror[2] > sys.l / 2
-                rmirror[2] -= sys.l
-            elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
                 rmirror[2] += sys.l
+            elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
+                rmirror[2] -= sys.l
             end
             Δr = √sum((sys.r[:, i] - rmirror) .^ 2)
             sys.f[:, i] += 48 * (((Δr)^-14) - 0.5 * ((Δr)^-8)) * (sys.r[:, i] - rmirror)
@@ -83,14 +83,14 @@ function update_force!(sys::MDSystem, i::Integer)
     for j ∈ setdiff(1:sys.N, i)
         rmirror = sys.r[:, j]
         if sys.r[1, i] - rmirror[1] > sys.l / 2
-            rmirror[1] -= sys.l
-        elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
             rmirror[1] += sys.l
+        elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
+            rmirror[1] -= sys.l
         end
         if sys.r[2, i] - rmirror[2] > sys.l / 2
-            rmirror[2] -= sys.l
-        elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
             rmirror[2] += sys.l
+        elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
+            rmirror[2] -= sys.l
         end
         Δr = √sum((sys.r[:, i] - rmirror) .^ 2)
         sys.f[:, i] += 48 * (((Δr)^-14) - 0.5 * ((Δr)^-8)) * (sys.r[:, i] - rmirror)
@@ -123,14 +123,14 @@ function update_potential!(sys::MDSystem)
     for i ∈ 1:(sys.N-1)
         for j ∈ i+1:sys.N
             rmirror = sys.r[:, j]
-            if sys.r[1, i] - rmirror[1] > 0.5
+            if sys.r[1, i] - rmirror[1] > sys.l / 2
                 rmirror[1] -= 1
-            elseif sys.r[1, i] - rmirror[1] < -0.5
+            elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
                 rmirror[1] += 1
             end
-            if sys.r[2, i] - rmirror[2] > 0.5
+            if sys.r[2, i] - rmirror[2] > sys.l / 2
                 rmirror[2] -= 1
-            elseif sys.r[2, i] - rmirror[2] < -0.5
+            elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
                 rmirror[2] += 1
             end
             Δr = √sum((sys.r[:, i] - rmirror) .^ 2)
@@ -168,12 +168,14 @@ end
 
 
 
-Parameters = Dict(:N => 50, :T₀ => 1.0, :h => 0.005, :l => 30.0)
+Parameters = Dict(:N => 100, :T₀ => 1.0, :h => 0.05, :l => 50.0)
 sys = init(; Parameters...)
 
-@gif for i ∈ 1:100
+using ProgressBars
+
+@gif for i ∈ ProgressBar(1:500)
     simulate!(sys)
-    scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (-1, 30.0), ylims = (-1, 30.0))
+    scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (1.0, 49.0), ylims = (1.0, 49.0))
 end
 
 
