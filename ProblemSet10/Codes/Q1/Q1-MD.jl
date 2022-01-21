@@ -25,6 +25,7 @@ end
 
 function init(; N::Integer, T₀::DT, h::DT, l::DT) where {DT<:AbstractFloat}
     sys = MDSystem(N, T₀, h, l)
+    alignleft!(sys)
     update_forces!(sys)
     update_phase!(sys)
     check_boundary!(sys)
@@ -42,6 +43,17 @@ function simulate!(sys::MDSystem)
     update_kinetic!(sys)
     update_temperature!(sys)
     update_pressure!(sys)
+end
+
+function alignleft!(sys::MDSystem)    #Thanks to my dearest friend for his beautiful method in setting the initial conditions SLH Hero
+    xcount = ceil(Integer, (2 * sys.N)^(1 / 2) / 2)
+    ycount = 2 * xcount
+
+    xs = collect(range(0.01 * sys.l / 2, 0.99 * sys.l / 2, length = xcount))
+    sys.r[1, :] .= repeat(xs, outer = ycount)[1:sys.N]
+
+    ys = collect(range(0.01 * sys.l, 0.99 * sys.l, length = ycount))
+    sys.r[2, :] .= repeat(ys, inner = xcount, outer = 1)[1:sys.N]
 end
 
 function update_forces!(sys::MDSystem)
@@ -102,7 +114,7 @@ function update_phase!(sys::MDSystem)
 end
 
 function check_boundary!(sys::MDSystem)
-    sys.r = ((sys.r .% sys.l) .+ sys.l) .% sys.l
+    sys.r = (sys.r .+ sys.l) .% sys.l
 end
 
 function update_potential!(sys::MDSystem)
@@ -156,17 +168,13 @@ end
 
 
 
-Parameters = Dict(:N => 30, :T₀ => 100.0, :h => 0.01, :l => 30.0)
+Parameters = Dict(:N => 50, :T₀ => 1.0, :h => 0.005, :l => 30.0)
 sys = init(; Parameters...)
 
-@gif for i ∈ 1:50
+@gif for i ∈ 1:100
     simulate!(sys)
     scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (-1, 30.0), ylims = (-1, 30.0))
 end
 
 
-sys.v
-
-simulate!(sys)
-
-
+scatter([Tuple(sys.r[:, n]) for n ∈ 1:sys.N], xlims = (-1, 30.0), ylims = (-1, 30.0))
