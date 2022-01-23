@@ -1,11 +1,14 @@
 module ExportData
 
-export ExportTotData, ExoirtSingleSysData
+export AnsembleData, SingleData
+
+cd(dirname(@__FILE__))
+include("Q1-MD.jl")
 
 using Statistics: mean
 using ProgressMeter
 
-function ExportTotData(sn::Integer, rn::Integer, Parameters::Dict)
+function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
     stepnum = sn
     runnum = rn
     Prog = Progress(stepnum * runnum)
@@ -30,7 +33,7 @@ function ExportTotData(sn::Integer, rn::Integer, Parameters::Dict)
     return mean(TotUColl, dims = 2), mean(TotKColl, dims = 2), mean(TotTColl, dims = 2), mean(TotPColl, dims = 2)
 end
 
-function ExoirtSingleSysData(sn::Integer, Parameters::Dict) where
+function SingleData(sn::Integer, Parameters::Dict)
     sys = MDSim.init(; Parameters...)
 
     stepnum = sn
