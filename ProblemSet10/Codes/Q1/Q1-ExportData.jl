@@ -4,9 +4,10 @@ export AnsembleData, SingleData
 
 cd(dirname(@__FILE__))
 include("Q1-MD.jl")
+datapath = "../../Data/Q1/"
 
 using Statistics: mean
-using ProgressMeter
+using ProgressMeter, JLD
 
 function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
     stepnum = sn
@@ -30,7 +31,7 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
             update!(Prog)
         end
     end
-    return mean(TotUColl, dims = 2), mean(TotKColl, dims = 2), mean(TotTColl, dims = 2), mean(TotPColl, dims = 2)
+    save(datapath * "DataTD.jld", "TotUColl", TotUColl, "TotKColl", TotKColl, "TotTColl", TotTColl, "TotPColl", TotPColl)
 end
 
 function SingleData(sn::Integer, Parameters::Dict)
@@ -57,7 +58,9 @@ function SingleData(sn::Integer, Parameters::Dict)
         next!(Prog)
         update!(Prog)
     end
-    return UColl, KColl, TColl, PColl, PosColl, VelColl
+    save(datapath * "DataSD.jld",
+        "PosColl", PosColl, "VelColl", VelColl,
+        "UColl", UColl, "KColl", KColl, "TColl", TColl, "PColl", PColl)
 end
 
 end
