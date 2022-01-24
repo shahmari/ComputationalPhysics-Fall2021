@@ -160,7 +160,7 @@ function update_pressure!(sys::MDSystem)
     for i ∈ 1:(sys.N-1)
         for j ∈ i+1:sys.N
             Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
-            if Δr < 0.5
+            if Δr < 0.5 * sys.l
                 Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
             end
         end
