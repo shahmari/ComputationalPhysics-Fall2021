@@ -17,11 +17,17 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
     TotKColl = zeros(stepnum, runnum)
     TotTColl = zeros(stepnum, runnum)
     TotPColl = zeros(stepnum, runnum)
+    TotrsColl = zeros(stepnum, runnum)
+    TotlsColl = zeros(stepnum, runnum)
 
     for j ∈ 1:runnum
         sys = MDSim.init(; Parameters...)
         for i ∈ 1:stepnum
             MDSim.simulate!(sys)
+            lsN = count(<=(sys.l / 2), sys.r[1, :] / sys.N)
+            rsN = 1 - lsN
+            TotlsColl[i, j] = lsN
+            TotrsColl[i, j] = rsN
             TotUColl[i, j] = sys.U
             TotKColl[i, j] = sys.K
             TotTColl[i, j] = sys.T
@@ -30,7 +36,7 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
             update!(Prog)
         end
     end
-    save(datapath * "DataTD.jld", "TotUColl", TotUColl, "TotKColl", TotKColl, "TotTColl", TotTColl, "TotPColl", TotPColl)
+    save(datapath * "DataTD.jld", "TotUColl", TotUColl, "TotKColl", TotKColl, "TotTColl", TotTColl, "TotPColl", TotPColl, "TotlsColl", TotlsColl, "TotrsColl", TotrsColl)
 end
 
 function SingleData(sn::Integer, Parameters::Dict)
