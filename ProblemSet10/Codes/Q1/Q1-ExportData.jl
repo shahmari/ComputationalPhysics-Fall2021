@@ -24,7 +24,7 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
         sys = MDSim.init(; Parameters...)
         for i ∈ 1:stepnum
             MDSim.simulate!(sys)
-            lsN = count(<=(sys.l / 2), sys.r[1, :] / sys.N)
+            lsN = count(<=(sys.l / 2), sys.r[1, :]) / sys.N
             rsN = 1 - lsN
             TotlsColl[i, j] = lsN
             TotrsColl[i, j] = rsN
@@ -36,7 +36,8 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
             update!(Prog)
         end
     end
-    save(datapath * "DataTD.jld", "TotUColl", TotUColl, "TotKColl", TotKColl, "TotTColl", TotTColl, "TotPColl", TotPColl, "TotlsColl", TotlsColl, "TotrsColl", TotrsColl)
+    save(datapath * "DataTD.jld", "TotUColl", TotUColl, "TotKColl", TotKColl,
+        "TotTColl", TotTColl, "TotPColl", TotPColl, "TotlsColl", TotlsColl, "TotrsColl", TotrsColl)
 end
 
 function SingleData(sn::Integer, Parameters::Dict)
@@ -68,7 +69,7 @@ function SingleData(sn::Integer, Parameters::Dict)
         "UColl", UColl, "KColl", KColl, "TColl", TColl, "PColl", PColl)
 end
 
-function MineData(TotUColl::Matrix{T}, TotKColl::Matrix{T}, TotTColl::Matrix{T}, TotPColl::Matrix{T}) where {T<:AbstractFloat}
+function MineData(TotUColl::Matrix{T}, TotKColl::Matrix{T}, TotTColl::Matrix{T}, TotPColl::Matrix{T}, TotlsColl::Matrix{T}, TotrsColl::Matrix{T}) where {T<:AbstractFloat}
     TUC = [[TotUColl[i, :]...] for i ∈ 1:size(TotUColl)[1]]
     for i ∈ TUC
         deleteat!(i, findall(x -> isnan(x), i))
@@ -85,9 +86,19 @@ function MineData(TotUColl::Matrix{T}, TotKColl::Matrix{T}, TotTColl::Matrix{T},
     for i ∈ TPC
         deleteat!(i, findall(x -> isnan(x), i))
     end
+    TRSC = [[TotrsColl[i, :]...] for i ∈ 1:size(TotrsColl)[1]]
+    for i ∈ TRSC
+        deleteat!(i, findall(x -> isnan(x), i))
+    end
+    TLSC = [[TotlsColl[i, :]...] for i ∈ 1:size(TotlsColl)[1]]
+    for i ∈ TLSC
+        deleteat!(i, findall(x -> isnan(x), i))
+    end
 
-    save(datapath * "MeanData.jld", "MEANUColl", mean.(TUC), "MEANKColl", mean.(TKC), "MEANTColl", mean.(TTC), "MEANPColl", mean.(TPC))
-    save(datapath * "STDData.jld", "STDUColl", std.(TUC), "STDKColl", std.(TKC), "STDTColl", std.(TTC), "STDPColl", std.(TPC))
+    save(datapath * "MeanData.jld", "MEANUColl", mean.(TUC), "MEANKColl", mean.(TKC),
+        "MEANTColl", mean.(TTC), "MEANPColl", mean.(TPC), "MEANlsColl", mean.(TLSC), "MEANrsColl", mean.(TRSC))
+    save(datapath * "STDData.jld", "STDUColl", std.(TUC), "STDKColl", std.(TKC),
+        "STDTColl", std.(TTC), "STDPColl", std.(TPC), "STDlsColl", std.(TLSC), "STDrsColl", std.(TRSC))
 end
 
 end
