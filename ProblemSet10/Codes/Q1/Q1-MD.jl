@@ -18,7 +18,6 @@ mutable struct MDSystem{DT<:AbstractFloat}
     function MDSystem(N::Integer, T₀::DT, h::DT, l::DT) where {DT<:AbstractFloat}
         r = rand(DT, 2, N) * l
         v = rand(DT, 2, N) .- 0.5
-        v .-= mean(v, dims = 2)
         v *= √(T₀ ÷ mean(v .^ 2))
         f = Matrix{DT}(undef, 2, N)
         return new{DT}(l, h, DT(NaN), DT(NaN), DT(NaN), DT(NaN), N, f, r, v)
