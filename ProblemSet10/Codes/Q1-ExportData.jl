@@ -1,14 +1,14 @@
 module ExportData
 
-export AnsembleData, SingleData, MineData
+export AnsembleData, SingleData, MineData, VanDerWaalsData
 
 cd(dirname(@__FILE__))
 include("Q1-MD.jl")
-datapath = "../../Data/"
+datapath = "../Data/"
 
 using ProgressMeter, JLD, Statistics
 
-function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict)
+function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict{Symbol,Real})
     stepnum = sn
     runnum = rn
     Prog = Progress(stepnum * runnum)
@@ -93,6 +93,31 @@ function MineData(TotUColl::Matrix{T}, TotKColl::Matrix{T}, TotTColl::Matrix{T},
         "MEANTColl", mean.(TTC), "MEANPColl", mean.(TPC), "MEANlsColl", mean.(TLSC))
     save(datapath * "STDData.jld", "STDUColl", std.(TUC), "STDKColl", std.(TKC),
         "STDTColl", std.(TTC), "STDPColl", std.(TPC), "STDlsColl", std.(TLSC))
+end
+
+function VanDerWaalsData(Parameters::Dict{Symbol,Real})
+    sys = MDSim.init(; Parameters...)
+
+    TColl = zeros(round(Int, 1 / sys.h))
+    PColl = zeros(round(Int, 1 / sys.h))
+    sys.h *= 10
+    for i ∈ 1:round(Int, 20 / sys.h)
+        MDSim.update_phase!(sys)
+        MDSim.check_boundary!(sys)
+    end
+
+    sys.h /= 10
+
+    for i ∈ 1:round(Int, 1 / sys.h)
+        MDSim.update_phase!(sys)
+        MDSim.check_boundary!(sys)
+        MDSim.update_temperature!(sys)
+        MDSim.update_pressure!(sys)
+        TColl[i] = sys.T
+        PColl[i] = sys.P
+    end
+
+    return std(TColl), mean(TColl), std(PColl), mean(PColl)
 end
 
 end
