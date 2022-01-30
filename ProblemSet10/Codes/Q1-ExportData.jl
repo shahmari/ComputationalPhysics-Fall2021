@@ -25,7 +25,6 @@ function AnsembleData(sn::Integer, rn::Integer, Parameters::Dict{Symbol,Real})
             MDSim.simulate!(sys)
             lsN = count(<=(sys.l / 2), sys.r[1, :]) / sys.N
             TotlsColl[i, j] = lsN
-            TotrsColl[i, j] = rsN
             TotUColl[i, j] = sys.U
             TotKColl[i, j] = sys.K
             TotTColl[i, j] = sys.T

@@ -125,14 +125,14 @@ function update_potential!(sys::MDSystem)
         for j ∈ i+1:sys.N
             rmirror = sys.r[:, j]
             if sys.r[1, i] - rmirror[1] > sys.l / 2
-                rmirror[1] -= 1
+                rmirror[1] -= sys.l
             elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
-                rmirror[1] += 1
+                rmirror[1] += sys.l
             end
             if sys.r[2, i] - rmirror[2] > sys.l / 2
-                rmirror[2] -= 1
+                rmirror[2] -= sys.l
             elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
-                rmirror[2] += 1
+                rmirror[2] += sys.l
             end
             Δr = √sum((sys.r[:, i] - rmirror) .^ 2)
             Σrterm += ((Δr)^-12) - ((Δr)^-6)
@@ -158,10 +158,19 @@ function update_pressure!(sys::MDSystem)
 
     for i ∈ 1:(sys.N-1)
         for j ∈ i+1:sys.N
-            Δr = √sum(abs.(sys.r[:, i] - sys.r[:, j]) .^ 2)
-            if Δr < 0.5 * sys.l
-                Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
+            rmirror = sys.r[:, j]
+            if sys.r[1, i] - rmirror[1] > sys.l / 2
+                rmirror[1] -= sys.l
+            elseif sys.r[1, i] - rmirror[1] < -sys.l / 2
+                rmirror[1] += sys.l
             end
+            if sys.r[2, i] - rmirror[2] > sys.l / 2
+                rmirror[2] -= sys.l
+            elseif sys.r[2, i] - rmirror[2] < -sys.l / 2
+                rmirror[2] += sys.l
+            end
+            Δr = √sum((sys.r[:, i] - rmirror) .^ 2)
+            Σrterm += ((Δr)^-12) - 0.5 * ((Δr)^-6)
         end
     end
     sys.P = ((48 * Σrterm) + Σv²) / (2 * sys.l * sys.l)
